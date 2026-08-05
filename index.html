@@ -393,6 +393,60 @@
       gap: 1rem;
     }
 
+    .unit-card {
+      padding: 1.3rem;
+    }
+
+    .unit-layout {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+    }
+
+    .unit-panel {
+      background: linear-gradient(135deg, rgba(22, 18, 18, 0.95), rgba(12, 10, 10, 0.9));
+      border: 1px solid rgba(255, 0, 0, 0.12);
+      border-radius: 20px;
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .unit-panel h4 {
+      margin: 0;
+      color: #ff6b6b;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .unit-helper {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .unit-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 0, 0, 0.12);
+      color: #ff8b8b;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 0, 0, 0.16);
+    }
+
     .section-grid {
       display: grid;
       gap: 1.5rem;
@@ -518,6 +572,10 @@
         grid-template-columns: 1fr;
       }
 
+      .unit-grid {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
         padding: 5rem 0;
       }
@@ -600,27 +658,39 @@
 
     <section id="unidad1" class="fade-up">
       <div class="section-title">Unidad 1</div>
-      <div class="card">
-        <div class="upload-area">
-          <div class="input-group">
-            <label for="pdfUpload1">Subir archivos PDF</label>
-            <input id="pdfUpload1" type="file" accept="application/pdf" multiple />
+      <div class="card unit-card">
+        <div class="unit-layout">
+          <div class="unit-badge">Presentación escolar</div>
+          <div class="unit-grid">
+            <div class="unit-panel">
+              <h4>Archivos y documentos</h4>
+              <div class="input-group">
+                <label for="pdfUpload1">Subir archivos PDF</label>
+                <input id="pdfUpload1" type="file" accept="application/pdf" multiple />
+              </div>
+              <div class="input-group">
+                <label for="imgUpload1">Subir imágenes</label>
+                <input id="imgUpload1" type="file" accept="image/*" multiple />
+              </div>
+              <div class="list-panel" id="pdfList1">
+                <h4>Lista de documentos PDF</h4>
+                <ul></ul>
+              </div>
+            </div>
+            <div class="unit-panel">
+              <h4>Recursos visuales</h4>
+              <p class="unit-helper">Aquí se muestran las imágenes y los recursos que acompañan a la unidad.</p>
+              <div class="gallery" id="gallery1"></div>
+              <div class="static-gallery">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen de Unidad 1" />
+              </div>
+            </div>
           </div>
-          <div class="input-group">
-            <label for="imgUpload1">Subir imágenes</label>
-            <input id="imgUpload1" type="file" accept="image/*" multiple />
-          </div>
-          <div class="list-panel" id="pdfList1">
-            <h4>Lista de documentos PDF</h4>
-            <ul></ul>
-          </div>
-          <div class="gallery" id="gallery1"></div>
-          <div class="static-gallery">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen de Unidad 1" />
-          </div>
-          <div class="input-group">
-            <label for="unit1Desc">Descripción editable</label>
-            <textarea id="unit1Desc">Escribe una descripción de Unidad 1, incluye ideas sobre contenido, actividades o recursos importantes.</textarea>
+          <div class="unit-panel">
+            <div class="input-group">
+              <label for="unit1Desc">Descripción editable</label>
+              <textarea id="unit1Desc">Escribe una descripción de Unidad 1, incluye ideas sobre contenido, actividades o recursos importantes.</textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -628,24 +698,36 @@
 
     <section id="unidad2" class="fade-up">
       <div class="section-title">Unidad 2</div>
-      <div class="card">
-        <div class="upload-area">
-          <div class="input-group">
-            <label for="pdfUpload2">Subir archivos PDF</label>
-            <input id="pdfUpload2" type="file" accept="application/pdf" multiple />
+      <div class="card unit-card">
+        <div class="unit-layout">
+          <div class="unit-badge">Presentación escolar</div>
+          <div class="unit-grid">
+            <div class="unit-panel">
+              <h4>Archivos y documentos</h4>
+              <div class="input-group">
+                <label for="pdfUpload2">Subir archivos PDF</label>
+                <input id="pdfUpload2" type="file" accept="application/pdf" multiple />
+              </div>
+              <div class="input-group">
+                <label for="imgUpload2">Subir imágenes</label>
+                <input id="imgUpload2" type="file" accept="image/*" multiple />
+              </div>
+              <div class="list-panel" id="pdfList2">
+                <h4>Lista de documentos PDF</h4>
+                <ul></ul>
+              </div>
+            </div>
+            <div class="unit-panel">
+              <h4>Galería de recursos</h4>
+              <p class="unit-helper">Organiza tus recursos visuales y materiales de apoyo para esta unidad.</p>
+              <div class="gallery" id="gallery2"></div>
+            </div>
           </div>
-          <div class="input-group">
-            <label for="imgUpload2">Subir imágenes</label>
-            <input id="imgUpload2" type="file" accept="image/*" multiple />
-          </div>
-          <div class="list-panel" id="pdfList2">
-            <h4>Lista de documentos PDF</h4>
-            <ul></ul>
-          </div>
-          <div class="gallery" id="gallery2"></div>
-          <div class="input-group">
-            <label for="unit2Tasks">Tareas y recursos</label>
-            <textarea id="unit2Tasks">Describe aquí las tareas y recursos de Unidad 2 para mantener el flujo de trabajo organizado y claro.</textarea>
+          <div class="unit-panel">
+            <div class="input-group">
+              <label for="unit2Tasks">Tareas y recursos</label>
+              <textarea id="unit2Tasks">Describe aquí las tareas y recursos de Unidad 2 para mantener el flujo de trabajo organizado y claro.</textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -653,28 +735,40 @@
 
     <section id="unidad3" class="fade-up">
       <div class="section-title">Unidad 3</div>
-      <div class="card">
-        <div class="upload-area">
-          <div class="input-group">
-            <label for="pdfUpload3">Subir archivos PDF</label>
-            <input id="pdfUpload3" type="file" accept="application/pdf" multiple />
+      <div class="card unit-card">
+        <div class="unit-layout">
+          <div class="unit-badge">Presentación escolar</div>
+          <div class="unit-grid">
+            <div class="unit-panel">
+              <h4>Archivos y documentos</h4>
+              <div class="input-group">
+                <label for="pdfUpload3">Subir archivos PDF</label>
+                <input id="pdfUpload3" type="file" accept="application/pdf" multiple />
+              </div>
+              <div class="input-group">
+                <label for="imgUpload3">Subir imágenes</label>
+                <input id="imgUpload3" type="file" accept="image/*" multiple />
+              </div>
+              <div class="list-panel" id="pdfList3">
+                <h4>Lista de tareas</h4>
+                <ul></ul>
+              </div>
+            </div>
+            <div class="unit-panel">
+              <h4>Material visual</h4>
+              <p class="unit-helper">Aquí se muestran las imágenes asignadas para esta unidad.</p>
+              <div class="gallery" id="gallery3"></div>
+              <div class="static-gallery">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAvAAADAQEBAAAAAAAAAAAAAAAABAUCAwEBAAMBAQAAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAADW9Tsu+yxAaeDmPebN9lxx0PCejMqjOVcW0Kl8rDC7AY58wGgBpItTI31Sx7eFQwwLlz75DBsnaTMaVrK+g0u4oOw7GfTvg2jfPsyT0weIacbT4Tc6mEdNDmDnkAt//8QAIRAAAgMAAwADAAMAAAAAAAAAAQIAAxESITEEEzIiI1H/2gAIAQEAAT8AUZPuCESm9STsdwZYPCYzFOuOZDdwOdHe9EWzfRktrVhojriz5DdDIAaVR+e7KflqThltyniBHO34e0MPAXNxzgU0TeaJ3rAbkBDkcB1nYl3glw6lR5A8jsorCONHogIDTmgbjw7yWGgdmclT8qD1AppVNIxhGfQZd+TEOLAT9oH+KI3f2MV0Lhl6IVNwYhgg6mBKAzDXc9RqeVz4cxQZaxtdKx+QvcbOxL2HGVAkjroGU5Y5Yw1KwIGwUom8tOiWUq6DiMyWqRnfoyVBh7LzgGSxizT4nKtCeOqR3KGUnBFR9BLdR6i/5aLQU3k3vkCEN225C2cpewIGQjXnwqhwIPpEdGovldugSsNkuSzFIM+pw6tLFbCY7AQH+Wz478E1nyfKu5j3ZTb+ZU/ke3DxX9ZDe/YdCWil1UBjuz67H7IwQjDKX1v7JfXQ9BdSOQEpDypz5FuQYCI1gNgbOpZdP//EABwRAAICAgMAAAAAAAAAAAAAAAABEBECMSAhQf/aAAgBAgEBPwBHZRQ0eoy0JQxK2ZcMRihwmPZcf//EACERAAICAgIBBQAAAAAAAAAAAAABAhEDURIhEzEzQUJh/9oACAEDAQE/AJu05C4tX86HJ7ORDI0he1OzF3NEpdlkbaMk1HG1sw/bdDvQqIx9TK+kiMuMkzIlVoumQnaG7ZKFcvxiVRSPHF9kYpI//9k=" alt="Imagen 2 de Unidad 3" />
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen 3 de Unidad 3" />
+              </div>
+            </div>
           </div>
-          <div class="input-group">
-            <label for="imgUpload3">Subir imágenes</label>
-            <input id="imgUpload3" type="file" accept="image/*" multiple />
-          </div>
-          <div class="list-panel" id="pdfList3">
-            <h4>Lista de tareas</h4>
-            <ul></ul>
-          </div>
-          <div class="gallery" id="gallery3"></div>
-          <div class="static-gallery">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAvAAADAQEBAAAAAAAAAAAAAAAABAUCAwEBAAMBAQAAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAADW9Tsu+yxAaeDmPebN9lxx0PCejMqjOVcW0Kl8rDC7AY58wGgBpItTI31Sx7eFQwwLlz75DBsnaTMaVrK+g0u4oOw7GfTvg2jfPsyT0weIacbT4Tc6mEdNDmDnkAt//8QAIRAAAgMAAwADAAMAAAAAAAAAAQIAAxESITEEEzIiI1H/2gAIAQEAAT8AUZPuCESm9STsdwZYPCYzFOuOZDdwOdHe9EWzfRktrVhojriz5DdDIAaVR+e7KflqThltyniBHO34e0MPAXNxzgU0TeaJ3rAbkBDkcB1nYl3glw6lR5A8jsorCONHogIDTmgbjw7yWGgdmclT8qD1AppVNIxhGfQZd+TEOLAT9oH+KI3f2MV0Lhl6IVNwYhgg6mBKAzDXc9RqeVz4cxQZaxtdKx+QvcbOxL2HGVAkjroGU5Y5Yw1KwIGwUom8tOiWUq6DiMyWqRnfoyVBh7LzgGSxizT4nKtCeOqR3KGUnBFR9BLdR6i/5aLQU3k3vkCEN225C2cpewIGQjXnwqhwIPpEdGovldugSsNkuSzFIM+pw6tLFbCY7AQH+Wz478E1nyfKu5j3ZTb+ZU/ke3DxX9ZDe/YdCWil1UBjuz67H7IwQjDKX1v7JfXQ9BdSOQEpDypz5FuQYCI1gNgbOpZdP//EABwRAAICAgMAAAAAAAAAAAAAAAABEBECMSAhQf/aAAgBAgEBPwBHZRQ0eoy0JQxK2ZcMRihwmPZcf//EACERAAICAgIBBQAAAAAAAAAAAAABAhEDURIhEzEzQUJh/9oACAEDAQE/AJu05C4tX86HJ7ORDI0he1OzF3NEpdlkbaMk1HG1sw/bdDvQqIx9TK+kiMuMkzIlVoumQnaG7ZKFcvxiVRSPHF9kYpI//9k=" alt="Imagen 2 de Unidad 3" />
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen 3 de Unidad 3" />
-          </div>
-          <div class="input-group">
-            <label for="unit3Notes">Área para observaciones</label>
-            <textarea id="unit3Notes">Escribe notas u observaciones para Unidad 3. Mantén aquí los detalles importantes y comentarios personales.</textarea>
+          <div class="unit-panel">
+            <div class="input-group">
+              <label for="unit3Notes">Área para observaciones</label>
+              <textarea id="unit3Notes">Escribe notas u observaciones para Unidad 3. Mantén aquí los detalles importantes y comentarios personales.</textarea>
+            </div>
           </div>
         </div>
       </div>
