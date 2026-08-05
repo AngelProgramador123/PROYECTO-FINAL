@@ -314,6 +314,23 @@
       margin-top: 1rem;
     }
 
+    .static-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .static-gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.26);
+    }
+
     .gallery-item {
       min-height: 100px;
       border-radius: 18px;
@@ -598,6 +615,9 @@
             <ul></ul>
           </div>
           <div class="gallery" id="gallery1"></div>
+          <div class="static-gallery">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen de Unidad 1" />
+          </div>
           <div class="input-group">
             <label for="unit1Desc">Descripción editable</label>
             <textarea id="unit1Desc">Escribe una descripción de Unidad 1, incluye ideas sobre contenido, actividades o recursos importantes.</textarea>
@@ -648,6 +668,10 @@
             <ul></ul>
           </div>
           <div class="gallery" id="gallery3"></div>
+          <div class="static-gallery">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAvAAADAQEBAAAAAAAAAAAAAAAABAUCAwEBAAMBAQAAAAAAAAAAAAAAAAABAgME/9oADAMBAAIQAxAAAADW9Tsu+yxAaeDmPebN9lxx0PCejMqjOVcW0Kl8rDC7AY58wGgBpItTI31Sx7eFQwwLlz75DBsnaTMaVrK+g0u4oOw7GfTvg2jfPsyT0weIacbT4Tc6mEdNDmDnkAt//8QAIRAAAgMAAwADAAMAAAAAAAAAAQIAAxESITEEEzIiI1H/2gAIAQEAAT8AUZPuCESm9STsdwZYPCYzFOuOZDdwOdHe9EWzfRktrVhojriz5DdDIAaVR+e7KflqThltyniBHO34e0MPAXNxzgU0TeaJ3rAbkBDkcB1nYl3glw6lR5A8jsorCONHogIDTmgbjw7yWGgdmclT8qD1AppVNIxhGfQZd+TEOLAT9oH+KI3f2MV0Lhl6IVNwYhgg6mBKAzDXc9RqeVz4cxQZaxtdKx+QvcbOxL2HGVAkjroGU5Y5Yw1KwIGwUom8tOiWUq6DiMyWqRnfoyVBh7LzgGSxizT4nKtCeOqR3KGUnBFR9BLdR6i/5aLQU3k3vkCEN225C2cpewIGQjXnwqhwIPpEdGovldugSsNkuSzFIM+pw6tLFbCY7AQH+Wz478E1nyfKu5j3ZTb+ZU/ke3DxX9ZDe/YdCWil1UBjuz67H7IwQjDKX1v7JfXQ9BdSOQEpDypz5FuQYCI1gNgbOpZdP//EABwRAAICAgMAAAAAAAAAAAAAAAABEBECMSAhQf/aAAgBAgEBPwBHZRQ0eoy0JQxK2ZcMRihwmPZcf//EACERAAICAgIBBQAAAAAAAAAAAAABAhEDURIhEzEzQUJh/9oACAEDAQE/AJu05C4tX86HJ7ORDI0he1OzF3NEpdlkbaMk1HG1sw/bdDvQqIx9TK+kiMuMkzIlVoumQnaG7ZKFcvxiVRSPHF9kYpI//9k=" alt="Imagen 2 de Unidad 3" />
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEABsbGxscGx4hIR4qLSgtKj04MzM4PV1CR0JHQl2NWGdYWGdYjX2Xe3N7l33gsJycsOD/2c7Z//////////////8BGxsbGxwbHiEhHiotKC0qPTgzMzg9XUJHQkdCXY1YZ1hYZ1iNfZd7c3uXfeCwnJyw4P/Zztn////////////////CABEIAEgASAMBIgACEQEDEQH/xAAwAAACAwEBAAAAAAAAAAAAAAAABAMFBgIBAQEBAQEBAAAAAAAAAAAAAAACAAEDBP/aAAwDAQACEAMQAAAAp/Gm+frr4L9yOV813OnI+6eGWcLkyvPHFVyQsVrGuEXUZWCrBFAbD0ZUnymi7r4LWRH0U/IvJZyRhbdS3GudRX6FA9eLPNsVoZ61uz0hC+4QXKwhAqnQDXNEGmxAt//EACsQAAICAgIBAwMCBwAAAAAAAAECAAMEERIxIQUTIjJBURBCFCMzcYGRwf/aAAgBAQABPwD3LE2AYGduzD7gUDZKxlYHozzxny4zzG3+Yd+J7JOgw3BgOw8JEwwg/ma4xMTHZQD5hwMYfshwMXoLG9KojelVn7xvTRyIBMK00jyAIMhWqYqQD9oQCv1En8THq4jZEu/ptqYxI+pZ2Ny1rEbYHiY73PzawaH2EKhgQRuHFSsE1ym/HsYo6hWEQKFHHqXWcEJIJE5ckPEmVjVaiE7h1N6BlOWLnZCuiJkeni1y6vDdl4ZAP0yj1Oq34WDU4XVWdgoepVYCNGdmO2iYxbiePcutuFzkkhpTn31fu2JVnY2ToWgAy3CqO2r0RK7LNcd8gOwexAFUr8h5HUZullh14M3M7HOxaqyzGW1Pcp/ys8gzFyOLfWVM5Jf5I4v+RHqFtSbbyvRgb4jcfuWZBqbXAmfxezo1nzLaWob3Kfv2syqBYPdrH9x+lV91OiOpR6hU4CuOMaz4growtyb/ALMhby+01qBckkEhYD4hrUbMycUMzGuJYazojY+4nsLcOVP+ot11J1s+D1Ks2tm8/Gf/xAAbEQADAQADAQAAAAAAAAAAAAAAAREQAhIhMf/aAAgBAgEBPwC57lIIar+63lKUhcudmM45D//EAB4RAAICAgIDAAAAAAAAAAAAAAABETECIRASIjJR/9oACAEDAQE/AI1LY3idka+kHZOzJujD0agV8Y4pyeSvaFCoaU6EhOGLhISOisVmWuJP/9k=" alt="Imagen 3 de Unidad 3" />
+          </div>
           <div class="input-group">
             <label for="unit3Notes">Área para observaciones</label>
             <textarea id="unit3Notes">Escribe notas u observaciones para Unidad 3. Mantén aquí los detalles importantes y comentarios personales.</textarea>
