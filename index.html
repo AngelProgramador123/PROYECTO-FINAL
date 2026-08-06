@@ -186,6 +186,79 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    .section-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    .section-title a:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .unit-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.5rem;
+      margin: 0.75rem 0 1.5rem;
+      border-radius: 999px;
+      background: rgba(255, 0, 0, 0.18);
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255, 0, 0, 0.35);
+      transition: background 0.25s ease, transform 0.25s ease;
+      width: fit-content;
+    }
+
+    .unit-cta:hover {
+      background: rgba(255, 0, 0, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .unit-portal-card {
+      display: grid;
+      grid-template-columns: minmax(220px, 320px) 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+      padding: 1.15rem;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .unit-portal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+      border-color: rgba(255, 0, 0, 0.3);
+    }
+
+    .unit-portal-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .unit-portal-content {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .unit-portal-content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -608,6 +681,10 @@
         justify-content: center;
       }
 
+      .unit-portal-card {
+        grid-template-columns: 1fr;
+      }
+
       .hero h1 {
         font-size: clamp(2.4rem, 11vw, 4.2rem);
       }
@@ -637,9 +714,9 @@
         <div class="menu">
           <a href="#inicio">Inicio</a>
           <a href="#biografia">Biografía</a>
-          <a href="#unidad1">Unidad 1</a>
-          <a href="#unidad2">Unidad 2</a>
-          <a href="#unidad3">Unidad 3</a>
+          <a href="unidad1.html">Unidad 1</a>
+          <a href="unidad2.html">Unidad 2</a>
+          <a href="unidad3.html">Unidad 3</a>
           <a href="#contacto">Contacto</a>
         </div>
       </nav>
@@ -679,7 +756,14 @@
     </section>
 
     <section id="unidad1" class="fade-up">
-      <div class="section-title">Unidad 1</div>
+      <a class="unit-portal-card" href="unidad1.html" aria-label="Entrar a Unidad 1">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Limp_Bizkit_Three_Dollar_Bill_Y%27All.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Imagen de apoyo de la Unidad 1" loading="lazy" decoding="async" />
+        <div class="unit-portal-content">
+          <div class="section-title">Unidad 1</div>
+          <p>Haz clic aquí para entrar al sitio de esta unidad, explorar su contenido y preparar la música que se agregará después.</p>
+          <span class="unit-cta">Entrar a Unidad 1</span>
+        </div>
+      </a>
       <div class="card unit-card">
         <div class="unit-layout">
           <div class="unit-badge">Presentación escolar</div>
@@ -720,7 +804,14 @@
     </section>
 
     <section id="unidad2" class="fade-up">
-      <div class="section-title">Unidad 2</div>
+      <a class="unit-portal-card" href="unidad2.html" aria-label="Entrar a Unidad 2">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Korn-Korn.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Imagen de apoyo de la Unidad 2" loading="lazy" decoding="async" />
+        <div class="unit-portal-content">
+          <div class="section-title">Unidad 2</div>
+          <p>Haz clic aquí para entrar al sitio de esta unidad, revisar los recursos visuales y acceder al espacio dedicado a la música.</p>
+          <span class="unit-cta">Entrar a Unidad 2</span>
+        </div>
+      </a>
       <div class="card unit-card">
         <div class="unit-layout">
           <div class="unit-badge">Presentación escolar</div>
@@ -761,7 +852,14 @@
     </section>
 
     <section id="unidad3" class="fade-up">
-      <div class="section-title">Unidad 3</div>
+      <a class="unit-portal-card" href="unidad3.html" aria-label="Entrar a Unidad 3">
+        <img src="https://i.scdn.co/image/ab67616d0000b273787094c5571657249e0b7261?format=jpg&quality=100&v=3" alt="Imagen de apoyo de la Unidad 3" loading="eager" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=80';" />
+        <div class="unit-portal-content">
+          <div class="section-title">Unidad 3</div>
+          <p>Haz clic aquí para entrar al sitio de esta unidad y descubrir el contenido con su música personalizada y su diseño visual.</p>
+          <span class="unit-cta">Entrar a Unidad 3</span>
+        </div>
+      </a>
       <div class="card unit-card">
         <div class="unit-layout">
           <div class="unit-badge">Presentación escolar</div>

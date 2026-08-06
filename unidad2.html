@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unidad 2 | Angel Angulo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070607;
+      --card: rgba(18, 18, 18, 0.92);
+      --border: rgba(255, 20, 20, 0.15);
+      --contrast: #ff2e2e;
+      --text: #e7e1dc;
+      --muted: #aaa;
+      --radius: 24px;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100%; background: var(--bg); color: var(--text); }
+    body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(circle, rgba(255,0,0,0.08), transparent 32%); pointer-events: none; }
+    .container { width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 1rem 0; }
+    header { padding: 1rem 0; border-bottom: 1px solid rgba(255, 0, 0, 0.12); }
+    nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .brand { color: var(--contrast); letter-spacing: 0.28em; text-transform: uppercase; }
+    .menu { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .menu a { color: var(--text); text-decoration: none; transition: color 0.2s ease; }
+    .menu a:hover { color: var(--contrast); }
+    main { padding: 2rem 0 4rem; }
+    .hero { padding: 3rem 2rem; background: rgba(20, 20, 20, 0.85); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); }
+    .hero h1 { margin: 0 0 1rem; font-size: clamp(2rem, 4vw, 3rem); }
+    .hero p { max-width: 44rem; line-height: 1.8; margin: 0 0 1.5rem; color: var(--muted); }
+    .unit-cta { display: inline-flex; align-items: center; padding: 0.9rem 1.5rem; border-radius: 999px; background: rgba(255, 0, 0, 0.18); color: var(--text); text-decoration: none; border: 1px solid rgba(255, 0, 0, 0.3); transition: background 0.2s ease; }
+    .unit-cta:hover { background: rgba(255, 0, 0, 0.35); }
+    .card { margin-top: 2rem; padding: 2rem; border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,0.06); }
+    .section-title { font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--contrast); margin-bottom: 1rem; }
+    .content-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .info-box { background: rgba(0,0,0,0.2); padding: 1.4rem; border-radius: 22px; border: 1px solid rgba(255,255,255,0.08); }
+    .info-box h2 { margin: 0 0 0.8rem; font-size: 1.05rem; }
+    .info-box p { margin: 0; line-height: 1.7; color: var(--muted); }
+    .unit-card { display: grid; gap: 1.5rem; }
+    .unit-layout { display: grid; gap: 1.5rem; }
+    .unit-badge { padding: 0.75rem 1rem; border-radius: 999px; background: rgba(255, 0, 0, 0.18); color: var(--text); width: fit-content; }
+    .unit-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr 1fr; }
+    .unit-panel { background: rgba(0,0,0,0.2); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.08); }
+    .unit-panel h4 { margin-top: 0; color: var(--contrast); }
+    .input-group { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+    label { color: var(--text); font-size: 0.95rem; }
+    input[type="file"], textarea { width: 100%; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08); background: rgba(0, 0, 0, 0.24); color: var(--text); padding: 0.9rem 1rem; }
+    textarea { min-height: 140px; resize: vertical; }
+    .list-panel { margin-top: 1rem; }
+    .list-panel ul { list-style: none; padding: 0; margin: 0; }
+    .list-panel li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--muted); }
+    .gallery { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); margin-top: 1rem; }
+    .gallery-item { background: rgba(255,255,255,0.04); border-radius: 18px; overflow: hidden; min-height: 120px; display: grid; place-items: center; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+    .unit-photo-card { margin-top: 1rem; overflow: hidden; border-radius: 24px; }
+    .unit-photo-card img { width: 100%; display: block; border-radius: 24px; }
+    .photo-caption { margin-top: 0.75rem; color: var(--muted); font-size: 0.95rem; }
+    .audio-card { margin-top: 2rem; padding: 1.5rem; border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2); }
+    audio { width: 100%; margin-top: 1rem; }
+    footer { margin-top: 3rem; text-align: center; color: rgba(231,225,220,0.75); font-size: 0.95rem; }
+    @media (max-width: 900px) { .unit-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <div class="brand">Angel Angulo</div>
+        <div class="menu">
+          <a href="index.html">Inicio</a>
+          <a href="unidad1.html">Unidad 1</a>
+          <a href="unidad2.html">Unidad 2</a>
+          <a href="unidad3.html">Unidad 3</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Unidad 2</h1>
+        <p>Accede a la página de Unidad 2 con el contenido original, las mismas imágenes y un reproductor listo para tu música personalizada.</p>
+        <a class="unit-cta" href="index.html">Volver al inicio</a>
+      </section>
+
+      <div class="audio-card">
+        <div class="section-title">Música de Unidad 2</div>
+        <p>Deja aquí el audio de la unidad cuando lo tengas. El reproductor está preparado para recibir el archivo correspondiente.</p>
+        <audio id="unitAudio2" controls preload="none">
+          <source id="unitAudioSource2" src="" type="audio/mpeg" />
+          Tu navegador no soporta audio.
+        </audio>
+      </div>
+
+      <article class="card unit-card">
+        <div class="unit-layout">
+          <div class="unit-badge">Presentación escolar</div>
+          <div class="unit-grid">
+            <div class="unit-panel">
+              <h4>Archivos y documentos</h4>
+              <div class="input-group">
+                <label for="pdfUpload2">Subir archivos PDF</label>
+                <input id="pdfUpload2" type="file" accept="application/pdf" multiple />
+              </div>
+              <div class="input-group">
+                <label for="imgUpload2">Subir imágenes</label>
+                <input id="imgUpload2" type="file" accept="image/*" multiple />
+              </div>
+              <div class="list-panel" id="pdfList2">
+                <h4>Lista de documentos PDF</h4>
+                <ul></ul>
+              </div>
+            </div>
+            <div class="unit-panel">
+              <h4>Galería de recursos</h4>
+              <p class="unit-helper">Organiza tus recursos visuales y materiales de apoyo para esta unidad.</p>
+              <div class="gallery" id="gallery2"></div>
+              <div class="unit-photo-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Korn-Korn.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Foto de apoyo de la Unidad 2" loading="lazy" decoding="async" />
+                <div class="photo-caption">Imagen destacada para Unidad 2</div>
+              </div>
+            </div>
+          </div>
+          <div class="unit-panel">
+            <div class="input-group">
+              <label for="unit2Tasks">Tareas y recursos</label>
+              <textarea id="unit2Tasks">Describe aquí las tareas y recursos de Unidad 2 para mantener el flujo de trabajo organizado y claro.</textarea>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer>© 2026 Angel Angulo · Unidad 2</footer>
+  </div>
+
+  <script>
+    function updatePdfList(input, listElement, defaultLabel) {
+      const list = listElement.querySelector('ul');
+      list.innerHTML = '';
+      if (!input || !input.files) return;
+      Array.from(input.files).forEach((file) => {
+        const item = document.createElement('li');
+        item.textContent = file.name;
+        list.appendChild(item);
+      });
+      if (!input.files.length) {
+        const item = document.createElement('li');
+        item.textContent = defaultLabel;
+        item.style.opacity = '0.7';
+        list.appendChild(item);
+      }
+    }
+
+    function updateGallery(input, galleryElement) {
+      galleryElement.innerHTML = '';
+      if (!input || !input.files) return;
+      Array.from(input.files).forEach((file) => {
+        const reader = new FileReader();
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        reader.onload = () => {
+          const img = document.createElement('img');
+          img.src = reader.result;
+          img.alt = file.name;
+          item.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+        galleryElement.appendChild(item);
+      });
+      if (!input.files.length) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'gallery-item';
+        placeholder.style.display = 'grid';
+        placeholder.style.placeItems = 'center';
+        placeholder.style.color = 'rgba(255,255,255,0.5)';
+        placeholder.style.fontSize = '0.95rem';
+        placeholder.textContent = 'Añade imágenes para ver la galería aquí.';
+        galleryElement.appendChild(placeholder);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const pdfInput = document.getElementById('pdfUpload2');
+      const imgInput = document.getElementById('imgUpload2');
+      const listEl = document.getElementById('pdfList2');
+      const galleryEl = document.getElementById('gallery2');
+
+      updatePdfList(pdfInput, listEl, 'No hay PDF seleccionados en Unidad 2.');
+      updateGallery(imgInput, galleryEl);
+
+      if (pdfInput) pdfInput.addEventListener('change', () => updatePdfList(pdfInput, listEl, 'No hay PDF seleccionados en Unidad 2.'));
+      if (imgInput) imgInput.addEventListener('change', () => updateGallery(imgInput, galleryEl));
+    });
+  </script>
+</body>
+</html>
