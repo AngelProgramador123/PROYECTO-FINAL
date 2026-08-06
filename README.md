@@ -5,4 +5,11 @@ Este es un intento de supervivencia para pasar nivelación
 <img width="720" height="1440" alt="foto3" src="https://github.com/user-attachments/assets/fccdfbf5-4d31-4ccd-91bd-9995afa1d1eb" />
 
 
+
+
+<img width="720" height="768" alt="image" src="https://github.com/user-attachments/assets/28863994-d7a7-42ca-9cae-d37319562bba" />
+
+
+
+
 <img width="1536" height="1024" alt="WhatsApp Image 2026-08-05 at 6 45 49 PM" src="https://github.com/user-attachments/assets/43e90b0c-7d7f-499a-b7da-32eeae374ce8" />
