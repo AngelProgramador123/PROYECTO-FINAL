@@ -191,7 +191,7 @@ print("El área del triángulo es", area)</pre>
 5 * 2 = 10
 8 / 2 = 4
 9 % 4 = 1</pre>
-            <p><strong>Ejemplo resuelto:</strong> En Python, `resultado = (4 + 3) * 2` hace primero la suma y después la multiplicación, resultando 14. El operador `%` devuelve el resto de una división.</p>
+            <p><strong>Ejemplo resuelto:</strong> En Python, <code>resultado = (4 + 3) * 2</code> hace primero la suma y después la multiplicación, resultando 14. El operador `%` devuelve el resto de una división.</p>
             <p>Estos operadores se usan para cálculos de precios, medidas, contadores y muchas otras tareas en los programas. Aprenderlos bien ayuda a resolver fórmulas y problemas numéricos con código.</p>
           </div>
         `
@@ -202,13 +202,13 @@ print("El área del triángulo es", area)</pre>
           <div class="topic-panel">
             <h3>Operadores lógicos</h3>
             <p>Los operadores lógicos comparan valores y devuelven True o False. Se usan para tomar decisiones en el programa y controlar el flujo de ejecución.</p>
-            <p>Los operadores más comunes son `and`, `or` y `not` en Python. También se usan comparaciones como `==`, `!=`, `>`, `<`, `>=` y `<=` para evaluar condiciones.</p>
+            <p>Los operadores más comunes son <code>and</code>, <code>or</code> y <code>not</code> en Python. También se usan comparaciones como <code>==</code>, <code>!=</code>, <code>></code>, <code><</code>, <code>>=</code> y <code><=</code> para evaluar condiciones.</p>
             <pre>5 > 3   => True
 4 == 4  => True
 7 < 2   => False
 not True => False
 </pre>
-            <p><strong>Ejemplo resuelto:</strong> Si `edad = 18` y `tieneIdentificacion = True`, entonces `edad >= 18 and tieneIdentificacion` es True, lo que permite tomar una decisión correcta en el programa.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si <code>edad = 18</code> y <code>tieneIdentificacion = True</code>, entonces <code>edad >= 18 and tieneIdentificacion</code> es True, lo que permite tomar una decisión correcta en el programa.</p>
             <p>Las condiciones lógicas se combinan para crear reglas más complejas, como verificar si un usuario puede iniciar sesión o si un número es par y mayor que cero.</p>
           </div>
         `
@@ -219,7 +219,7 @@ not True => False
           <div class="topic-panel">
             <h3>Condicionales</h3>
             <p>Las condicionales permiten ejecutar instrucciones diferentes según si una condición es verdadera o falsa. Son una herramienta básica para controlar el comportamiento del programa.</p>
-            <p>En Python se usan `if`, `elif` y `else`. La estructura evalúa una condición y, si es verdadera, ejecuta un bloque de código; de lo contrario, evalúa la siguiente condición o ejecuta el bloque final.</p>
+            <p>En Python se usan <code>if</code>, <code>elif</code> y <code>else</code>. La estructura evalúa una condición y, si es verdadera, ejecuta un bloque de código; de lo contrario, evalúa la siguiente condición o ejecuta el bloque final.</p>
             <pre>if temperatura > 25:
   print("Hace calor")
 elif temperatura >= 15:
@@ -238,7 +238,7 @@ else:
           <div class="topic-panel">
             <h3>Estructuras repetitivas</h3>
             <p>Las estructuras repetitivas repiten acciones varias veces hasta que se cumpla una condición o se termine un contador. Son útiles para procesar listas, sumar valores o repetir tareas automáticas.</p>
-            <p>En Python se usan bucles `for` y `while`. El bucle `for` recorre una secuencia de valores, mientras que `while` repite mientras una condición sea verdadera.</p>
+            <p>En Python se usan bucles <code>for</code> y <code>while</code>. El bucle <code>for</code> recorre una secuencia de valores, mientras que <code>while</code> repite mientras una condición sea verdadera.</p>
             <pre>for i in range(5):
   print(i)
 
@@ -306,12 +306,31 @@ print(total)  # Imprime 15</pre>
     }
 
     function setActiveTopic(index) {
+      if (!Array.isArray(topics) || topics.length === 0) return;
+      const activeIndex = Math.min(Math.max(index, 0), topics.length - 1);
       const buttons = document.querySelectorAll('.topic-button');
       buttons.forEach((button, idx) => {
-        button.classList.toggle('active', idx === index);
+        button.classList.toggle('active', idx === activeIndex);
       });
       const content = document.getElementById('topicContent');
-      content.innerHTML = topics[index].content;
+      if (content) {
+        content.innerHTML = topics[activeIndex]?.content || '';
+      }
+    }
+
+    function createTopicTabs() {
+      const tabs = document.getElementById('topicTabs');
+      if (!tabs) return;
+      tabs.innerHTML = '';
+      topics.forEach((topic, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'topic-button';
+        button.textContent = topic.title;
+        button.addEventListener('click', () => setActiveTopic(index));
+        tabs.appendChild(button);
+      });
+      setActiveTopic(0);
     }
 
     const BG_AUDIO_KEY = 'bgAudioEnabled';

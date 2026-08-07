@@ -237,7 +237,7 @@ NOT 0 = 1
 </pre>
             <p>Las puertas lógicas son la implementación física de estas operaciones. Por ejemplo, una puerta AND solo encenderá su salida si todas sus entradas son 1. Una puerta OR enciende la salida si al menos una entrada es 1.</p>
             <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar AND y OR para decidir si una luz debe encenderse según si hay coches o peatones. Si hay coche y el semáforo está en verde, la luz de paso queda activa; si no, permanece en rojo.</p>
-            <p>La lógica booleana ayuda a construir condiciones precisas y simples en los programas, como `if (edad >= 18 && tieneIdentificacion)` para decidir si alguien puede entrar a un lugar.</p>
+            <p>La lógica booleana ayuda a construir condiciones precisas y simples en los programas, como <code>if (edad >= 18 && tieneIdentificacion)</code> para decidir si alguien puede entrar a un lugar.</p>
           </div>
         `
       }
@@ -291,16 +291,22 @@ NOT 0 = 1
     }
 
     function setActiveTopic(index) {
+      if (!Array.isArray(topics) || topics.length === 0) return;
+      const activeIndex = Math.min(Math.max(index, 0), topics.length - 1);
       const buttons = document.querySelectorAll('.topic-button');
       buttons.forEach((button, idx) => {
-        button.classList.toggle('active', idx === index);
+        button.classList.toggle('active', idx === activeIndex);
       });
       const content = document.getElementById('topicContent');
-      content.innerHTML = topics[index].content;
+      if (content) {
+        content.innerHTML = topics[activeIndex]?.content || '';
+      }
     }
 
     function createTopicTabs() {
       const tabs = document.getElementById('topicTabs');
+      if (!tabs) return;
+      tabs.innerHTML = '';
       topics.forEach((topic, index) => {
         const button = document.createElement('button');
         button.type = 'button';
