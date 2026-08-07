@@ -304,12 +304,29 @@ print(total)  # Imprime 15</pre>
       content.innerHTML = topics[index].content;
     }
 
-    let bgPlaying = false;
+    const BG_AUDIO_KEY = 'bgAudioEnabled';
+    let bgPlaying = localStorage.getItem(BG_AUDIO_KEY) === 'true';
 
     function createBackgroundPlayer() {
       const container = document.getElementById('bgAudioPlayer');
       if (!container) return;
-      container.innerHTML = `<iframe id="youtubeBackground" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      container.innerHTML = `<iframe id="youtubeBackground" width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    }
+
+    function setBackgroundButtonState(playing) {
+      const button = document.getElementById('bgAudioToggle');
+      if (!button) return;
+      button.textContent = playing ? 'Pausar música de fondo' : 'Reproducir música de fondo';
+      localStorage.setItem(BG_AUDIO_KEY, playing ? 'true' : 'false');
+    }
+
+    function ensureBackgroundAudio() {
+      if (!bgPlaying) return;
+      const iframe = document.getElementById('youtubeBackground');
+      if (!iframe) return;
+      if (!iframe.src) {
+        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
+      }
     }
 
     function toggleBackgroundAudio() {
@@ -319,13 +336,12 @@ print(total)  # Imprime 15</pre>
 
       if (!bgPlaying) {
         iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
-        button.textContent = 'Pausar música de fondo';
       } else {
         iframe.src = '';
-        button.textContent = 'Reproducir música de fondo';
       }
 
       bgPlaying = !bgPlaying;
+      setBackgroundButtonState(bgPlaying);
     }
 
     function createTopicTabs() {
@@ -344,6 +360,11 @@ print(total)  # Imprime 15</pre>
     document.addEventListener('DOMContentLoaded', () => {
       createTopicTabs();
       createBackgroundPlayer();
+      setBackgroundButtonState(bgPlaying);
+      ensureBackgroundAudio();
+      if (bgPlaying) {
+        document.addEventListener('pointerdown', () => ensureBackgroundAudio(), { once: true });
+      }
 
       const bgButton = document.getElementById('bgAudioToggle');
       if (bgButton) bgButton.addEventListener('click', toggleBackgroundAudio);

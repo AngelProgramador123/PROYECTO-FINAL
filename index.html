@@ -923,7 +923,8 @@
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let bgPlayer = null;
-    let bgAudioEnabled = false;
+    const BG_AUDIO_KEY = 'bgAudioEnabled';
+    let bgAudioEnabled = localStorage.getItem(BG_AUDIO_KEY) === 'true';
     let bgAudioReady = false;
 
     function setBackgroundAudioState(active) {
@@ -931,6 +932,7 @@
       if (!button) return;
       button.classList.toggle('active', active);
       button.textContent = active ? '🔊' : '🔈';
+      localStorage.setItem(BG_AUDIO_KEY, active ? 'true' : 'false');
     }
 
     function toggleBackgroundAudio() {
@@ -971,7 +973,11 @@
         events: {
           onReady: () => {
             bgAudioReady = true;
-            setBackgroundAudioState(false);
+            setBackgroundAudioState(bgAudioEnabled);
+            if (bgAudioEnabled) {
+              bgPlayer.setVolume(18);
+              bgPlayer.playVideo();
+            }
           }
         }
       });
