@@ -92,7 +92,7 @@
     <main>
       <section class="hero">
         <h1>Unidad 1</h1>
-        <p>Este tema principal es <strong>Estructura y funcionamiento del computador</strong>, con ejemplos sencillos y un estilo oscuro para que sea fácil de leer.</p>
+        <p>Este tema principal es <strong>Estructura y funcionamiento del computador</strong>. Dentro de esta unidad encontrarás subtemas claros y ejemplos sencillos sobre memoria, software, numeración y lógica digital.</p>
         <a class="unit-cta" href="index.html">Volver al inicio</a>
         <div class="topic-tabs" id="topicTabs"></div>
         <div class="topic-content" id="topicContent"></div>
@@ -154,13 +154,15 @@
         content: `
           <div class="topic-panel">
             <h3>Modelo de von Neumann y Harvard</h3>
-            <p>El computador se organiza en procesamiento y memoria. En von Neumann, instrucciones y datos comparten la misma memoria. En Harvard, se separan.</p>
+            <p>El computador se divide en unidad central de proceso (CPU), memoria y dispositivos de entrada/salida. El modelo de von Neumann usa una sola memoria para instrucciones y datos.</p>
+            <p>En el modelo Harvard, existen memorias separadas: una para instrucciones y otra para datos. Esto puede ser más rápido para algunos sistemas embebidos.</p>
             <pre>von Neumann:
 [instrucción] [dato] [dato]
 
 Harvard:
 [instrucción] ...  [dato] ...
 </pre>
+            <p><strong>Ejemplo sencillo:</strong> En von Neumann, el procesador lee el código y los números desde el mismo lugar. En Harvard, lee el código desde una memoria y los números desde otra.</p>
           </div>
         `
       },
@@ -169,11 +171,12 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas operativos</h3>
-            <p>El sistema operativo controla el hardware, administra programas y gestiona archivos. Es el encargado de que todo funcione de forma ordenada.</p>
+            <p>El sistema operativo es el software que organiza el computador. Administra la memoria, controla los programas y ayuda a usar archivos e impresoras.</p>
             <ul>
-              <li>Ejemplos: Windows, Linux, macOS.</li>
-              <li>Es como el director de una orquesta que coordina tareas.</li>
+              <li>Windows, Linux y macOS son sistemas operativos conocidos.</li>
+              <li>Es como el director de una orquesta: coordina tareas, decide qué se ejecuta y cuándo.</li>
             </ul>
+            <p><strong>Ejemplo:</strong> Cuando abres un navegador, el sistema operativo reserva memoria y comparte el procesador con otras aplicaciones.</p>
           </div>
         `
       },
@@ -182,14 +185,14 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas de numeración</h3>
-            <p>En computación se usan sistemas binario, octal y hexadecimal para representar números.</p>
-            <pre>Decimal 10 = Binario 1010
-Decimal 10 = Octal 12
-Decimal 10 = Hexadecimal A
-
-Binario 1101 = Decimal 13
-Octal 17 = Decimal 15
-Hexadecimal 1F = Decimal 31
+            <p>Los computadores usan diferentes bases numéricas. El binario usa base 2, el octal usa base 8 y el hexadecimal usa base 16.</p>
+            <pre>Decimal 10 = Binario 1010 = Octal 12 = Hexadecimal A
+Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
+</pre>
+            <p><strong>Conversiones fáciles:</strong></p>
+            <pre>Binario 1100 = 1·8 + 1·4 + 0·2 + 0·1 = 12 decimal
+Hexadecimal 2F = 2·16 + 15 = 47 decimal
+Octal 17 = 1·8 + 7 = 15 decimal
 </pre>
           </div>
         `
@@ -199,12 +202,18 @@ Hexadecimal 1F = Decimal 31
         content: `
           <div class="topic-panel">
             <h3>Aritmética binaria</h3>
-            <p>Sumar en binario usa solo 0 y 1. La regla básica es 1 + 1 = 10.</p>
+            <p>En binario solo usamos 0 y 1. Sumar sigue las mismas reglas que en decimal, pero con base 2.</p>
+            <ul>
+              <li>0 + 0 = 0</li>
+              <li>0 + 1 = 1</li>
+              <li>1 + 1 = 10 (llevada 1)</li>
+            </ul>
             <pre>  1011  (11 decimal)
 + 0101  (5 decimal)
 -------
  10000  (16 decimal)
 </pre>
+            <p><strong>Otro ejemplo:</strong> 111 + 001 = 1000, porque 7 + 1 = 8 en decimal.</p>
           </div>
         `
       },
@@ -213,7 +222,7 @@ Hexadecimal 1F = Decimal 31
         content: `
           <div class="topic-panel">
             <h3>Álgebra de Boole</h3>
-            <p>Es la lógica digital de los computadores. Trabaja con valores 0 (falso) y 1 (verdadero).</p>
+            <p>El álgebra de Boole es la lógica que usan los circuitos digitales. Trabaja con verdad (1) y falso (0).</p>
             <pre>AND: 1 AND 1 = 1
 1 AND 0 = 0
 
@@ -223,6 +232,7 @@ OR: 1 OR 0 = 1
 NOT: NOT 1 = 0
 NOT 0 = 1
 </pre>
+            <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar AND y OR para decidir si un carro puede pasar.</p>
           </div>
         `
       }
@@ -295,40 +305,27 @@ NOT 0 = 1
       setActiveTopic(0);
     }
 
-    let bgPlayer = null;
     let bgPlaying = false;
 
     function createBackgroundPlayer() {
       const container = document.getElementById('bgAudioPlayer');
       if (!container) return;
-      container.innerHTML = `<iframe id="youtubeBackground" width="0" height="0" src="https://www.youtube.com/embed/PIF4So6xcU8?autoplay=0&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-      const iframe = container.querySelector('iframe');
-      if (!iframe) return;
-      window.onYouTubeIframeAPIReady = function() {
-        bgPlayer = new YT.Player('youtubeBackground', {
-          events: {
-            onReady: (event) => {
-              event.target.setVolume(30);
-            }
-          }
-        });
-      };
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(tag);
+      container.innerHTML = `<iframe id="youtubeBackground" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
     }
 
     function toggleBackgroundAudio() {
-      if (!bgPlayer) return;
       const button = document.getElementById('bgAudioToggle');
-      if (!button) return;
+      const iframe = document.getElementById('youtubeBackground');
+      if (!button || !iframe) return;
+
       if (!bgPlaying) {
-        bgPlayer.playVideo();
+        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
         button.textContent = 'Pausar música de fondo';
       } else {
-        bgPlayer.pauseVideo();
+        iframe.src = '';
         button.textContent = 'Reproducir música de fondo';
       }
+
       bgPlaying = !bgPlaying;
     }
 
