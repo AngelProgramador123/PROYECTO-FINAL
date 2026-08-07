@@ -31,6 +31,17 @@
     .hero { padding: 3rem 2rem; background: rgba(20, 20, 20, 0.85); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); }
     .hero h1 { margin: 0 0 1rem; font-size: clamp(2rem, 4vw, 3rem); }
     .hero p { max-width: 44rem; line-height: 1.8; margin: 0 0 1.5rem; color: var(--muted); }
+    .topic-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.85rem; margin-top: 1.5rem; }
+    .topic-button { padding: 0.95rem 1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255, 0, 0, 0.12); color: var(--text); cursor: pointer; transition: background 0.25s ease, transform 0.2s ease, border-color 0.25s ease; text-align: center; }
+    .topic-button:hover { background: rgba(255, 0, 0, 0.22); transform: translateY(-1px); }
+    .topic-button.active { background: rgba(255, 0, 0, 0.3); border-color: rgba(255,0,0,0.25); }
+    .topic-content { margin-top: 1.8rem; display: grid; gap: 1rem; }
+    .topic-panel { padding: 1.5rem; border-radius: 24px; background: rgba(8, 8, 8, 0.86); border: 1px solid rgba(255,255,255,0.08); box-shadow: inset 0 0 24px rgba(255,0,0,0.05); }
+    .topic-panel h3 { margin-top: 0; color: var(--contrast); font-size: 1.3rem; }
+    .topic-panel p, .topic-panel pre { margin: 0; line-height: 1.7; color: var(--text); }
+    .topic-panel pre { margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 18px; overflow-x: auto; color: #f4f4f4; font-family: ui-monospace, SFMono-Regular, monospace; }
+    .topic-panel ul { padding-left: 1.15rem; margin: 0; color: var(--text); }
+    .topic-panel li { margin-bottom: 0.65rem; }
     .unit-cta { display: inline-flex; align-items: center; padding: 0.9rem 1.5rem; border-radius: 999px; background: rgba(255, 0, 0, 0.18); color: var(--text); text-decoration: none; border: 1px solid rgba(255, 0, 0, 0.3); transition: background 0.2s ease; }
     .unit-cta:hover { background: rgba(255, 0, 0, 0.35); }
     .card { margin-top: 2rem; padding: 2rem; border-radius: var(--radius); background: var(--card); border: 1px solid rgba(255,255,255,0.06); }
@@ -81,17 +92,17 @@
     <main>
       <section class="hero">
         <h1>Unidad 3</h1>
-        <p>Aquí tienes la página de Unidad 3 con el contenido original y las mismas imágenes. El reproductor de audio está listo para la música de esta unidad.</p>
+        <p>Este tema principal es <strong>Programación</strong>. En esta unidad se explica con ejemplos sencillos desde paradigmas hasta estructuras de control para que sea fácil y dinámico de leer.</p>
         <a class="unit-cta" href="index.html">Volver al inicio</a>
+        <div class="topic-tabs" id="topicTabs"></div>
+        <div class="topic-content" id="topicContent"></div>
       </section>
 
       <div class="audio-card">
         <div class="section-title">Música de Unidad 3</div>
-        <p>Inserta aquí la pista de audio correspondiente cuando la tengas. El reproductor está preparado para cada unidad.</p>
-        <audio id="unitAudio3" controls preload="none">
-          <source id="unitAudioSource3" src="" type="audio/mpeg" />
-          Tu navegador no soporta audio.
-        </audio>
+        <p>Reproduce la pista única de la unidad con el audio oficial de YouTube Music.</p>
+        <button id="bgAudioToggle" class="unit-cta" type="button">Reproducir música de fondo</button>
+        <div id="bgAudioPlayer" style="display: none;"></div>
       </div>
 
       <article class="card unit-card">
@@ -137,6 +148,96 @@
   </div>
 
   <script>
+    const topics = [
+      {
+        title: 'Lenguajes y paradigmas',
+        content: `
+          <div class="topic-panel">
+            <h3>Lenguajes y paradigmas de programación</h3>
+            <p>Un lenguaje de programación es la forma en que damos instrucciones a la computadora. Los paradigmas son estilos de programar como imperativo, orientado a objetos y funcional.</p>
+            <ul>
+              <li>Imperativo: explica paso a paso lo que debe hacer el programa.</li>
+              <li>Orientado a objetos: organiza el código con objetos y clases.</li>
+              <li>Funcional: usa funciones como bloques principales de construcción.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong> Python es un lenguaje que puede usarse de forma imperativa y orientada a objetos.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Introducción a Python',
+        content: `
+          <div class="topic-panel">
+            <h3>Introducción a la programación en Python</h3>
+            <p>Python es un lenguaje fácil de leer. Usa palabras simples como <code>print</code> y una sintaxis clara.</p>
+            <pre>print("Hola mundo")
+numero = 5
+suma = numero + 2
+print(suma)</pre>
+            <p>Es ideal para aprender programación porque sus instrucciones parecen casi lenguaje natural.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Operadores algebraicos',
+        content: `
+          <div class="topic-panel">
+            <h3>Operadores algebraicos</h3>
+            <p>Los operadores algebraicos realizan cálculos con números, como suma, resta, multiplicación y división.</p>
+            <pre>3 + 2 = 5
+7 - 4 = 3
+5 * 2 = 10
+8 / 2 = 4</pre>
+            <p><strong>Ejemplo:</strong> en Python, <code>resultado = 3 + 4 * 2</code> calcula primero la multiplicación y luego la suma.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Operadores lógicos',
+        content: `
+          <div class="topic-panel">
+            <h3>Operadores y lógicos</h3>
+            <p>Los operadores lógicos comparan valores para decidir si algo es verdadero o falso.</p>
+            <pre>5 > 3  => True
+4 == 4 => True
+7 < 2  => False
+not True => False</pre>
+            <p><strong>Ejemplo:</strong> <code>if edad >= 18 and tieneIdentificacion:</code> se usa para tomar decisiones con más de una condición.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Condicionales',
+        content: `
+          <div class="topic-panel">
+            <h3>Estructura de control de condicionales</h3>
+            <p>Las condicionales permiten ejecutar código solo cuando se cumple una condición.</p>
+            <pre>if temperatura > 25:
+  print("Hace calor")
+else:
+  print("Hace fresco")</pre>
+            <p>Esto ayuda a que los programas reaccionen de forma diferente según los datos.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Repetitivas',
+        content: `
+          <div class="topic-panel">
+            <h3>Estructura de control repetitiva</h3>
+            <p>Las estructuras repetitivas repiten acciones varias veces hasta que se cumple una condición.</p>
+            <pre>for i in range(5):
+  print(i)
+
+while contador < 3:
+  contador += 1
+  print(contador)</pre>
+            <p><strong>Ejemplo:</strong> usar un bucle para mostrar los números del 1 al 5 sin escribir cada uno manualmente.</p>
+          </div>
+        `
+      }
+    ];
+
     function updatePdfList(input, listElement, defaultLabel) {
       const list = listElement.querySelector('ul');
       list.innerHTML = '';
@@ -182,7 +283,59 @@
       }
     }
 
+    function setActiveTopic(index) {
+      const buttons = document.querySelectorAll('.topic-button');
+      buttons.forEach((button, idx) => {
+        button.classList.toggle('active', idx === index);
+      });
+      const content = document.getElementById('topicContent');
+      content.innerHTML = topics[index].content;
+    }
+
+    let bgPlaying = false;
+
+    function createBackgroundPlayer() {
+      const container = document.getElementById('bgAudioPlayer');
+      if (!container) return;
+      container.innerHTML = `<iframe id="youtubeBackground" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    }
+
+    function toggleBackgroundAudio() {
+      const button = document.getElementById('bgAudioToggle');
+      const iframe = document.getElementById('youtubeBackground');
+      if (!button || !iframe) return;
+
+      if (!bgPlaying) {
+        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
+        button.textContent = 'Pausar música de fondo';
+      } else {
+        iframe.src = '';
+        button.textContent = 'Reproducir música de fondo';
+      }
+
+      bgPlaying = !bgPlaying;
+    }
+
+    function createTopicTabs() {
+      const tabs = document.getElementById('topicTabs');
+      topics.forEach((topic, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'topic-button';
+        button.textContent = topic.title;
+        button.addEventListener('click', () => setActiveTopic(index));
+        tabs.appendChild(button);
+      });
+      setActiveTopic(0);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      createTopicTabs();
+      createBackgroundPlayer();
+
+      const bgButton = document.getElementById('bgAudioToggle');
+      if (bgButton) bgButton.addEventListener('click', toggleBackgroundAudio);
+
       const pdfInput = document.getElementById('pdfUpload3');
       const imgInput = document.getElementById('imgUpload3');
       const listEl = document.getElementById('pdfList3');

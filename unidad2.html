@@ -81,17 +81,17 @@
     <main>
       <section class="hero">
         <h1>Unidad 2</h1>
-        <p>Accede a la página de Unidad 2 con el contenido original, las mismas imágenes y un reproductor listo para tu música personalizada.</p>
+        <p>Este tema principal es <strong>Algoritmos, diagramas de flujo y pseudocódigo</strong>. Aquí encontrarás subtemas explicados con ejemplos sencillos y un diseño dinámico para hacer el aprendizaje ameno.</p>
         <a class="unit-cta" href="index.html">Volver al inicio</a>
+        <div class="topic-tabs" id="topicTabs"></div>
+        <div class="topic-content" id="topicContent"></div>
       </section>
 
       <div class="audio-card">
         <div class="section-title">Música de Unidad 2</div>
-        <p>Deja aquí el audio de la unidad cuando lo tengas. El reproductor está preparado para recibir el archivo correspondiente.</p>
-        <audio id="unitAudio2" controls preload="none">
-          <source id="unitAudioSource2" src="" type="audio/mpeg" />
-          Tu navegador no soporta audio.
-        </audio>
+        <p>Reproduce la pista única de la unidad con el audio oficial de YouTube Music.</p>
+        <button id="bgAudioToggle" class="unit-cta" type="button">Reproducir música de fondo</button>
+        <div id="bgAudioPlayer" style="display: none;"></div>
       </div>
 
       <article class="card unit-card">
@@ -137,6 +137,72 @@
   </div>
 
   <script>
+    const topics = [
+      {
+        title: 'Algoritmos y sus características',
+        content: `
+          <div class="topic-panel">
+            <h3>Algoritmos y sus características</h3>
+            <p>Un algoritmo es una serie de pasos para resolver un problema. Debe ser claro, finito y ejecutable.</p>
+            <ul>
+              <li>Claro: cada paso debe entenderse sin confusiones.</li>
+              <li>Finito: debe terminar en un número determinado de pasos.</li>
+              <li>Preciso: cada instrucción debe ser exacta.</li>
+            </ul>
+            <p><strong>Ejemplo:</strong> un algoritmo para preparar un té: hervir agua, poner la bolsa, esperar y servir.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Diagramas de flujo',
+        content: `
+          <div class="topic-panel">
+            <h3>Los diagramas de flujo como herramienta de modelación</h3>
+            <p>El diagrama de flujo usa formas y flechas para mostrar el orden de los pasos de un algoritmo.</p>
+            <ul>
+              <li>Óvalo: inicio y fin.</li>
+              <li>Rectángulo: acción o proceso.</li>
+              <li>Rombo: decisión con sí/no.</li>
+            </ul>
+            <p><strong>Ejemplo sencillo:</strong> un flujo para decidir si debes llevar paraguas: si llueve, sí, si no, no.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Pseudocódigo',
+        content: `
+          <div class="topic-panel">
+            <h3>Pseudocódigo; una herramienta de palabras útil</h3>
+            <p>El pseudocódigo utiliza palabras sencillas para describir un algoritmo antes de programarlo.</p>
+            <pre>INICIO
+  LEER edad
+  SI edad >= 18 ENTONCES
+    MOSTRAR "Eres adulto"
+  SINO
+    MOSTRAR "Eres menor"
+  FIN SI
+FIN</pre>
+            <p>Es útil porque se entiende como un idioma común entre personas y programadores.</p>
+          </div>
+        `
+      },
+      {
+        title: 'Modelo de problemas',
+        content: `
+          <div class="topic-panel">
+            <h3>Modelo de problemas</h3>
+            <p>Un modelo de problemas divide una situación en entradas, procesos y salidas para encontrar una solución.</p>
+            <p>Esto ayuda a analizar qué datos se necesitan, qué debe hacer el algoritmo y qué resultado debe producir.</p>
+            <pre>Problema: sumar dos números
+Entradas: número1, número2
+Proceso: sumar número1 + número2
+Salida: resultado</pre>
+            <p><strong>Ejemplo:</strong> al calcular el promedio de notas, las notas son entradas, el cálculo es el proceso y el promedio es la salida.</p>
+          </div>
+        `
+      }
+    ];
+
     function updatePdfList(input, listElement, defaultLabel) {
       const list = listElement.querySelector('ul');
       list.innerHTML = '';
@@ -182,7 +248,57 @@
       }
     }
 
+    function setActiveTopic(index) {
+      const buttons = document.querySelectorAll('.topic-button');
+      buttons.forEach((button, idx) => {
+        button.classList.toggle('active', idx === index);
+      });
+      const content = document.getElementById('topicContent');
+      content.innerHTML = topics[index].content;
+    }
+
+    function createTopicTabs() {
+      const tabs = document.getElementById('topicTabs');
+      topics.forEach((topic, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'topic-button';
+        button.textContent = topic.title;
+        button.addEventListener('click', () => setActiveTopic(index));
+        tabs.appendChild(button);
+      });
+      setActiveTopic(0);
+    }
+
+    function createBackgroundPlayer() {
+      const container = document.getElementById('bgAudioPlayer');
+      if (!container) return;
+      container.innerHTML = `<iframe id="youtubeBackground" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    }
+
+    function toggleBackgroundAudio() {
+      const button = document.getElementById('bgAudioToggle');
+      const iframe = document.getElementById('youtubeBackground');
+      if (!button || !iframe) return;
+
+      if (!bgPlaying) {
+        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
+        button.textContent = 'Pausar música de fondo';
+      } else {
+        iframe.src = '';
+        button.textContent = 'Reproducir música de fondo';
+      }
+
+      bgPlaying = !bgPlaying;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      createTopicTabs();
+      createBackgroundPlayer();
+
+      const bgButton = document.getElementById('bgAudioToggle');
+      if (bgButton) bgButton.addEventListener('click', toggleBackgroundAudio);
+
       const pdfInput = document.getElementById('pdfUpload2');
       const imgInput = document.getElementById('imgUpload2');
       const listEl = document.getElementById('pdfList2');
