@@ -153,16 +153,17 @@
         title: 'Modelo von Neumann y Harvard',
         content: `
           <div class="topic-panel">
-            <h3>Modelo de von Neumann y Harvard</h3>
-            <p>El computador se divide en unidad central de proceso (CPU), memoria y dispositivos de entrada/salida. El modelo de von Neumann usa una sola memoria para instrucciones y datos.</p>
-            <p>En el modelo Harvard, existen memorias separadas: una para instrucciones y otra para datos. Esto puede ser más rápido para algunos sistemas embebidos.</p>
+            <h3>Modelo von Neumann y Harvard</h3>
+            <p>El computador se divide en CPU, memoria y periféricos. En el modelo de von Neumann, la memoria contiene tanto instrucciones como datos, y la CPU los procesa uno a uno.</p>
+            <p>En el modelo Harvard, la memoria se separa en dos: una para instrucciones y otra para datos. Esto permite leer instrucciones y datos al mismo tiempo.</p>
             <pre>von Neumann:
-[instrucción] [dato] [dato]
+[instrucción][dato][dato]
 
 Harvard:
-[instrucción] ...  [dato] ...
+[instrucción]   [dato]
 </pre>
-            <p><strong>Ejemplo sencillo:</strong> En von Neumann, el procesador lee el código y los números desde el mismo lugar. En Harvard, lee el código desde una memoria y los números desde otra.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si la instrucción es "SUMAR A B", en von Neumann la CPU lee la instrucción y luego los datos desde la misma memoria. En Harvard, la instrucción se lee de una memoria y los datos de otra, lo que reduce esperas.</p>
+            <p>El modelo Harvard es más rápido en ciertos dispositivos, pero von Neumann es más simple y común en computadores personales.</p>
           </div>
         `
       },
@@ -171,12 +172,14 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas operativos</h3>
-            <p>El sistema operativo es el software que organiza el computador. Administra la memoria, controla los programas y ayuda a usar archivos e impresoras.</p>
+            <p>El sistema operativo (SO) es el software que controla el hardware y los programas. Administra el uso de memoria, procesos, archivos y dispositivos.</p>
             <ul>
-              <li>Windows, Linux y macOS son sistemas operativos conocidos.</li>
-              <li>Es como el director de una orquesta: coordina tareas, decide qué se ejecuta y cuándo.</li>
+              <li>Gestión de memoria: distribuye espacio a cada programa.</li>
+              <li>Gestión de procesos: decide qué programa se ejecuta primero.</li>
+              <li>Gestión de archivos: organiza documentos y carpetas.</li>
             </ul>
-            <p><strong>Ejemplo:</strong> Cuando abres un navegador, el sistema operativo reserva memoria y comparte el procesador con otras aplicaciones.</p>
+            <p><strong>Ejemplo resuelto:</strong> Cuando abres un navegador, el SO reserva memoria para él, crea un proceso y permite usar la red sin que el navegador interfiera con otros programas.</p>
+            <p>Sin un sistema operativo, el computador no podría ejecutar varias tareas al mismo tiempo de forma ordenada.</p>
           </div>
         `
       },
@@ -185,15 +188,15 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas de numeración</h3>
-            <p>Los computadores usan diferentes bases numéricas. El binario usa base 2, el octal usa base 8 y el hexadecimal usa base 16.</p>
+            <p>Los computadores usan principalmente el sistema binario. Para leer números más fácilmente, los humanos usamos también hexadecimal y octal.</p>
             <pre>Decimal 10 = Binario 1010 = Octal 12 = Hexadecimal A
 Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
 </pre>
-            <p><strong>Conversiones fáciles:</strong></p>
-            <pre>Binario 1100 = 1·8 + 1·4 + 0·2 + 0·1 = 12 decimal
-Hexadecimal 2F = 2·16 + 15 = 47 decimal
-Octal 17 = 1·8 + 7 = 15 decimal
-</pre>
+            <p><strong>Ejemplo resuelto:</strong> Convertir 1100 binario a decimal:</p>
+            <pre>1·8 + 1·4 + 0·2 + 0·1 = 12</pre>
+            <p>Convertir 2F hexadecimal a decimal:</p>
+            <pre>2·16 + 15 = 47</pre>
+            <p>Estas conversiones ayudan a entender cómo un computador representa datos internamente.</p>
           </div>
         `
       },
@@ -202,7 +205,7 @@ Octal 17 = 1·8 + 7 = 15 decimal
         content: `
           <div class="topic-panel">
             <h3>Aritmética binaria</h3>
-            <p>En binario solo usamos 0 y 1. Sumar sigue las mismas reglas que en decimal, pero con base 2.</p>
+            <p>En binario solo usamos 0 y 1. Las operaciones se hacen con las mismas ideas que en decimal, pero con reglas de base 2.</p>
             <ul>
               <li>0 + 0 = 0</li>
               <li>0 + 1 = 1</li>
@@ -213,7 +216,8 @@ Octal 17 = 1·8 + 7 = 15 decimal
 -------
  10000  (16 decimal)
 </pre>
-            <p><strong>Otro ejemplo:</strong> 111 + 001 = 1000, porque 7 + 1 = 8 en decimal.</p>
+            <p><strong>Ejemplo resuelto:</strong> 111 + 001 = 1000, porque 7 + 1 = 8 en decimal.</p>
+            <p>La aritmética binaria es la base de cómo los circuitos suman y restan valores en un computador.</p>
           </div>
         `
       },
@@ -222,7 +226,7 @@ Octal 17 = 1·8 + 7 = 15 decimal
         content: `
           <div class="topic-panel">
             <h3>Álgebra de Boole</h3>
-            <p>El álgebra de Boole es la lógica que usan los circuitos digitales. Trabaja con verdad (1) y falso (0).</p>
+            <p>El álgebra de Boole trabaja con valores lógicos: 1 para verdadero y 0 para falso. Se usa en circuitos digitales y en decisiones dentro de los programas.</p>
             <pre>AND: 1 AND 1 = 1
 1 AND 0 = 0
 
@@ -232,7 +236,8 @@ OR: 1 OR 0 = 1
 NOT: NOT 1 = 0
 NOT 0 = 1
 </pre>
-            <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar AND y OR para decidir si un carro puede pasar.</p>
+            <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar <code>AND</code> y <code>OR</code> para decidir si una luz debe encenderse según si hay coches o peatones.</p>
+            <p>La lógica booleana ayuda a construir condiciones precisas y simples en los programas.</p>
           </div>
         `
       }

@@ -154,13 +154,13 @@
         content: `
           <div class="topic-panel">
             <h3>Lenguajes y paradigmas de programación</h3>
-            <p>Un lenguaje de programación es la forma en que damos instrucciones a la computadora. Los paradigmas son estilos de programar como imperativo, orientado a objetos y funcional.</p>
+            <p>Un lenguaje de programación es la forma en que le escribimos instrucciones a la computadora. Un paradigma es la manera de estructurar esas instrucciones.</p>
             <ul>
-              <li>Imperativo: explica paso a paso lo que debe hacer el programa.</li>
-              <li>Orientado a objetos: organiza el código con objetos y clases.</li>
-              <li>Funcional: usa funciones como bloques principales de construcción.</li>
+              <li>Imperativo: dice qué hacer paso a paso.</li>
+              <li>Orientado a objetos: usa clases y objetos que representan datos y acciones.</li>
+              <li>Funcional: se basa en funciones que reciben datos y devuelven resultados sin cambiar el estado.</li>
             </ul>
-            <p><strong>Ejemplo:</strong> Python es un lenguaje que puede usarse de forma imperativa y orientada a objetos.</p>
+            <p><strong>Ejemplo resuelto:</strong> Python permite escribir código imperativo y también usar clases para organizar programas orientados a objetos.</p>
           </div>
         `
       },
@@ -168,13 +168,14 @@
         title: 'Introducción a Python',
         content: `
           <div class="topic-panel">
-            <h3>Introducción a la programación en Python</h3>
-            <p>Python es un lenguaje fácil de leer. Usa palabras simples como <code>print</code> y una sintaxis clara.</p>
+            <h3>Introducción a Python</h3>
+            <p>Python es un lenguaje fácil de leer y usar. Las instrucciones se agrupan por indentación en lugar de usar llaves.</p>
             <pre>print("Hola mundo")
-numero = 5
-suma = numero + 2
-print(suma)</pre>
-            <p>Es ideal para aprender programación porque sus instrucciones parecen casi lenguaje natural.</p>
+base = 5
+altura = 3
+area = (base * altura) / 2
+print("El área del triángulo es", area)</pre>
+            <p><strong>Ejemplo resuelto:</strong> Si base = 5 y altura = 3, Python calcula el área como 7.5 y lo muestra en pantalla.</p>
           </div>
         `
       },
@@ -183,12 +184,13 @@ print(suma)</pre>
         content: `
           <div class="topic-panel">
             <h3>Operadores algebraicos</h3>
-            <p>Los operadores algebraicos realizan cálculos con números, como suma, resta, multiplicación y división.</p>
+            <p>Los operadores algebraicos permiten realizar cálculos matemáticos con números.</p>
             <pre>3 + 2 = 5
 7 - 4 = 3
 5 * 2 = 10
-8 / 2 = 4</pre>
-            <p><strong>Ejemplo:</strong> en Python, <code>resultado = 3 + 4 * 2</code> calcula primero la multiplicación y luego la suma.</p>
+8 / 2 = 4
+9 % 4 = 1</pre>
+            <p><strong>Ejemplo resuelto:</strong> En Python, <code>resultado = (4 + 3) * 2</code> hace primero la suma y después la multiplicación, resultando 14.</p>
           </div>
         `
       },
@@ -196,13 +198,14 @@ print(suma)</pre>
         title: 'Operadores lógicos',
         content: `
           <div class="topic-panel">
-            <h3>Operadores y lógicos</h3>
-            <p>Los operadores lógicos comparan valores para decidir si algo es verdadero o falso.</p>
-            <pre>5 > 3  => True
-4 == 4 => True
-7 < 2  => False
-not True => False</pre>
-            <p><strong>Ejemplo:</strong> <code>if edad >= 18 and tieneIdentificacion:</code> se usa para tomar decisiones con más de una condición.</p>
+            <h3>Operadores lógicos</h3>
+            <p>Los operadores lógicos comparan valores y devuelven True o False. Se usan para tomar decisiones en el programa.</p>
+            <pre>5 > 3   => True
+4 == 4  => True
+7 < 2   => False
+not True => False
+</pre>
+            <p><strong>Ejemplo resuelto:</strong> Si <code>edad = 18</code> y <code>tieneIdentificacion = True</code>, entonces <code>edad >= 18 and tieneIdentificacion</code> es True.</p>
           </div>
         `
       },
@@ -210,13 +213,16 @@ not True => False</pre>
         title: 'Condicionales',
         content: `
           <div class="topic-panel">
-            <h3>Estructura de control de condicionales</h3>
-            <p>Las condicionales permiten ejecutar código solo cuando se cumple una condición.</p>
+            <h3>Condicionales</h3>
+            <p>Las condicionales permiten ejecutar instrucciones diferentes según si una condición es verdadera o falsa.</p>
             <pre>if temperatura > 25:
   print("Hace calor")
+elif temperatura >= 15:
+  print("Hace temperatura agradable")
 else:
-  print("Hace fresco")</pre>
-            <p>Esto ayuda a que los programas reaccionen de forma diferente según los datos.</p>
+  print("Hace frío")
+</pre>
+            <p><strong>Ejemplo resuelto:</strong> Si temperatura = 18, el programa imprime "Hace temperatura agradable" porque cumple la segunda condición.</p>
           </div>
         `
       },
@@ -224,15 +230,21 @@ else:
         title: 'Repetitivas',
         content: `
           <div class="topic-panel">
-            <h3>Estructura de control repetitiva</h3>
-            <p>Las estructuras repetitivas repiten acciones varias veces hasta que se cumple una condición.</p>
+            <h3>Estructuras repetitivas</h3>
+            <p>Las estructuras repetitivas repiten acciones varias veces hasta que se cumpla una condición o se termine un contador.</p>
             <pre>for i in range(5):
   print(i)
 
+contador = 0
 while contador < 3:
   contador += 1
-  print(contador)</pre>
-            <p><strong>Ejemplo:</strong> usar un bucle para mostrar los números del 1 al 5 sin escribir cada uno manualmente.</p>
+  print(contador)
+</pre>
+            <p><strong>Ejemplo resuelto:</strong> Para sumar los primeros cinco números naturales:</p>
+            <pre>total = 0
+for i in range(1, 6):
+  total += i
+print(total)  # Imprime 15</pre>
           </div>
         `
       }

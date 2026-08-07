@@ -143,13 +143,24 @@
         content: `
           <div class="topic-panel">
             <h3>Algoritmos y sus características</h3>
-            <p>Un algoritmo es una serie de pasos para resolver un problema. Debe ser claro, finito y ejecutable.</p>
+            <p>Un algoritmo es una serie de pasos ordenados para resolver un problema. Debe ser claro, finito, preciso y producir un resultado concreto.</p>
             <ul>
-              <li>Claro: cada paso debe entenderse sin confusiones.</li>
-              <li>Finito: debe terminar en un número determinado de pasos.</li>
-              <li>Preciso: cada instrucción debe ser exacta.</li>
+              <li>Claro: cada paso se entiende sin confusión.</li>
+              <li>Finito: termina después de un número limitado de pasos.</li>
+              <li>Preciso: no deja dudas sobre qué hacer en cada paso.</li>
+              <li>Entrada y salida: recibe datos y genera un resultado.</li>
             </ul>
-            <p><strong>Ejemplo:</strong> un algoritmo para preparar un té: hervir agua, poner la bolsa, esperar y servir.</p>
+            <p><strong>Ejemplo resuelto:</strong> Encontrar el número mayor entre dos valores:</p>
+            <pre>INICIO
+  LEER numero1
+  LEER numero2
+  SI numero1 > numero2 ENTONCES
+    MOSTRAR numero1
+  SINO
+    MOSTRAR numero2
+  FIN SI
+FIN</pre>
+            <p>Si numero1=7 y numero2=5, el resultado es 7. Si numero1=12 y numero2=15, el resultado es 15.</p>
           </div>
         `
       },
@@ -157,14 +168,24 @@
         title: 'Diagramas de flujo',
         content: `
           <div class="topic-panel">
-            <h3>Los diagramas de flujo como herramienta de modelación</h3>
-            <p>El diagrama de flujo usa formas y flechas para mostrar el orden de los pasos de un algoritmo.</p>
+            <h3>Diagramas de flujo</h3>
+            <p>Los diagramas de flujo representan los pasos de un algoritmo con formas y flechas. Son útiles para planificar antes de programar.</p>
             <ul>
-              <li>Óvalo: inicio y fin.</li>
-              <li>Rectángulo: acción o proceso.</li>
-              <li>Rombo: decisión con sí/no.</li>
+              <li>Óvalo: inicio o fin del proceso.</li>
+              <li>Rectángulo: acción o cálculo.</li>
+              <li>Rombo: decisión o condición.</li>
+              <li>Flechas: indican el orden de los pasos.</li>
             </ul>
-            <p><strong>Ejemplo sencillo:</strong> un flujo para decidir si debes llevar paraguas: si llueve, sí, si no, no.</p>
+            <p><strong>Ejemplo resuelto:</strong> Decidir si se debe llevar paraguas:</p>
+            <pre>INICIO
+  PREGUNTAR "¿Está lloviendo?"
+  SI SÍ ENTONCES
+    MOSTRAR "Llevar paraguas"
+  SINO
+    MOSTRAR "No llevar paraguas"
+  FIN SI
+FIN</pre>
+            <p>Este diagrama muestra cómo una pregunta cambia el flujo del proceso.</p>
           </div>
         `
       },
@@ -172,17 +193,17 @@
         title: 'Pseudocódigo',
         content: `
           <div class="topic-panel">
-            <h3>Pseudocódigo; una herramienta de palabras útil</h3>
-            <p>El pseudocódigo utiliza palabras sencillas para describir un algoritmo antes de programarlo.</p>
+            <h3>Pseudocódigo</h3>
+            <p>El pseudocódigo usa palabras simples para describir la lógica de un algoritmo sin detalles de un lenguaje específico.</p>
             <pre>INICIO
-  LEER edad
-  SI edad >= 18 ENTONCES
-    MOSTRAR "Eres adulto"
-  SINO
-    MOSTRAR "Eres menor"
-  FIN SI
+  LEER nota1
+  LEER nota2
+  LEER nota3
+  promedio = (nota1 + nota2 + nota3) / 3
+  MOSTRAR "El promedio es", promedio
 FIN</pre>
-            <p>Es útil porque se entiende como un idioma común entre personas y programadores.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si nota1=8, nota2=7 y nota3=9, entonces promedio = (8 + 7 + 9) / 3 = 8.</p>
+            <p>El pseudocódigo ayuda a verificar los pasos antes de pasarlos a un lenguaje real.</p>
           </div>
         `
       },
@@ -191,13 +212,13 @@ FIN</pre>
         content: `
           <div class="topic-panel">
             <h3>Modelo de problemas</h3>
-            <p>Un modelo de problemas divide una situación en entradas, procesos y salidas para encontrar una solución.</p>
-            <p>Esto ayuda a analizar qué datos se necesitan, qué debe hacer el algoritmo y qué resultado debe producir.</p>
-            <pre>Problema: sumar dos números
-Entradas: número1, número2
-Proceso: sumar número1 + número2
-Salida: resultado</pre>
-            <p><strong>Ejemplo:</strong> al calcular el promedio de notas, las notas son entradas, el cálculo es el proceso y el promedio es la salida.</p>
+            <p>El modelo de problemas divide el ejercicio en entradas, procesos y salidas. Esto ayuda a entender qué información se necesita y qué se debe obtener.</p>
+            <pre>Problema: calcular precio final con IVA
+Entradas: precio, tasaIVA
+Proceso: precioFinal = precio + precio * tasaIVA
+Salida: precioFinal</pre>
+            <p><strong>Ejemplo resuelto:</strong> Si precio = 10 y tasaIVA = 0.12, entonces precioFinal = 10 + 10 * 0.12 = 11.2.</p>
+            <p>Con este modelo resultan más fáciles las decisiones sobre qué pasos debe tener el algoritmo.</p>
           </div>
         `
       }
