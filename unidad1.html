@@ -147,6 +147,7 @@
     <footer>© 2026 Angel Angulo · Unidad 1</footer>
   </div>
 
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     const topics = [
       {
@@ -155,15 +156,10 @@
           <div class="topic-panel">
             <h3>Modelo von Neumann y Harvard</h3>
             <p>El computador se divide en CPU, memoria y periféricos. En el modelo de von Neumann, la memoria contiene tanto instrucciones como datos, y la CPU los procesa uno a uno.</p>
-            <p>En el modelo Harvard, la memoria se separa en dos: una para instrucciones y otra para datos. Esto permite leer instrucciones y datos al mismo tiempo.</p>
-            <pre>von Neumann:
-[instrucción][dato][dato]
-
-Harvard:
-[instrucción]   [dato]
-</pre>
-            <p><strong>Ejemplo resuelto:</strong> Si la instrucción es "SUMAR A B", en von Neumann la CPU lee la instrucción y luego los datos desde la misma memoria. En Harvard, la instrucción se lee de una memoria y los datos de otra, lo que reduce esperas.</p>
-            <p>El modelo Harvard es más rápido en ciertos dispositivos, pero von Neumann es más simple y común en computadores personales.</p>
+            <p>En el modelo Harvard, la memoria se separa en dos: una para instrucciones y otra para datos. Esto permite leer instrucciones y datos al mismo tiempo, lo que puede reducir retrasos en sistemas embebidos y microcontroladores.</p>
+            <p>En von Neumann, la CPU realiza un ciclo de buscar, decodificar y ejecutar. Primero lee la instrucción de la memoria, luego obtiene los datos que necesita y finalmente ejecuta la operación. Este diseño hace que la arquitectura sea más simple, pero puede generar el llamado "cuello de botella de von Neumann" cuando la memoria y la CPU compiten por el mismo canal.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si la instrucción es "SUMAR A B", la CPU lee la instrucción desde la memoria, luego busca los operandos A y B en la misma memoria, los suma y guarda el resultado. En Harvard, la instrucción viene de una memoria separada y los datos de otra, lo cual permite que la CPU obtenga instrucciones y datos casi al mismo tiempo.</p>
+            <p>Estos modelos son importantes para comprender por qué algunos dispositivos usan diseños de memoria separados y otros usan un solo espacio de memoria compartido. La elección afecta el rendimiento y la complejidad del hardware en computadoras, teléfonos y sistemas industriales.</p>
           </div>
         `
       },
@@ -172,14 +168,16 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas operativos</h3>
-            <p>El sistema operativo (SO) es el software que controla el hardware y los programas. Administra el uso de memoria, procesos, archivos y dispositivos.</p>
+            <p>El sistema operativo (SO) es el software que controla el hardware y los programas. Administra el uso de memoria, procesos, archivos y dispositivos, y provee servicios para que otras aplicaciones trabajen sin acceder directamente al hardware.</p>
+            <p>El corazón del SO se llama kernel. El kernel gestiona la memoria, crea procesos, maneja interrupciones y controla los dispositivos conectados. El shell o interfaz es la parte con la que interactúa el usuario, ya sea por comandos o por una interfaz gráfica.</p>
             <ul>
-              <li>Gestión de memoria: distribuye espacio a cada programa.</li>
-              <li>Gestión de procesos: decide qué programa se ejecuta primero.</li>
-              <li>Gestión de archivos: organiza documentos y carpetas.</li>
+              <li>Gestión de memoria: asigna espacio a programas y evita que unos sobrescriban la memoria de otros.</li>
+              <li>Gestión de procesos: decide qué programa se ejecuta y por cuánto tiempo.</li>
+              <li>Gestión de archivos: organiza carpetas, permisos y accesos.</li>
+              <li>Control de dispositivos: usa drivers para que impresoras, discos y teclados funcionen.</li>
             </ul>
-            <p><strong>Ejemplo resuelto:</strong> Cuando abres un navegador, el SO reserva memoria para él, crea un proceso y permite usar la red sin que el navegador interfiera con otros programas.</p>
-            <p>Sin un sistema operativo, el computador no podría ejecutar varias tareas al mismo tiempo de forma ordenada.</p>
+            <p><strong>Ejemplo resuelto:</strong> Cuando abres un navegador, el SO reserva memoria para él, crea un proceso independiente y permite usar la red sin que el navegador interfiera con otros programas. Si también abres un reproductor de música, el SO coordina ambos procesos y distribuye el tiempo de CPU entre ellos.</p>
+            <p>Los sistemas operativos pueden ser de escritorio, móviles, de tiempo real o de servidor. Cada tipo se diseña para necesidades diferentes: algunos priorizan la interacción con el usuario y otros la estabilidad y el rendimiento continuo.</p>
           </div>
         `
       },
@@ -188,7 +186,8 @@ Harvard:
         content: `
           <div class="topic-panel">
             <h3>Sistemas de numeración</h3>
-            <p>Los computadores usan principalmente el sistema binario. Para leer números más fácilmente, los humanos usamos también hexadecimal y octal.</p>
+            <p>Los computadores usan principalmente el sistema binario. Para leer números más fácilmente, los humanos usamos también hexadecimal y octal. Cada sistema usa una base diferente: decimal base 10, binario base 2, octal base 8 y hexadecimal base 16.</p>
+            <p>El binario solo tiene dos dígitos: 0 y 1. Cada posición representa una potencia de 2. El hexadecimal usa dígitos de 0 a F, lo que hace más corta la representación de números largos y es útil para direcciones de memoria y colores en programación.</p>
             <pre>Decimal 10 = Binario 1010 = Octal 12 = Hexadecimal A
 Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
 </pre>
@@ -196,7 +195,7 @@ Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
             <pre>1·8 + 1·4 + 0·2 + 0·1 = 12</pre>
             <p>Convertir 2F hexadecimal a decimal:</p>
             <pre>2·16 + 15 = 47</pre>
-            <p>Estas conversiones ayudan a entender cómo un computador representa datos internamente.</p>
+            <p>El sistema binario es la base de todos los circuitos digitales, porque los switches solo distinguen dos estados: encendido o apagado. El hexadecimal simplifica la notación cuando trabajamos con datos binarios largos y permite leer valores de memoria con mayor rapidez.</p>
           </div>
         `
       },
@@ -205,7 +204,7 @@ Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
         content: `
           <div class="topic-panel">
             <h3>Aritmética binaria</h3>
-            <p>En binario solo usamos 0 y 1. Las operaciones se hacen con las mismas ideas que en decimal, pero con reglas de base 2.</p>
+            <p>En binario solo usamos 0 y 1. Las operaciones se hacen con las mismas ideas que en decimal, pero con reglas de base 2. Las sumas y restas en binario son fundamentales para que los procesadores realicen cálculos.</p>
             <ul>
               <li>0 + 0 = 0</li>
               <li>0 + 1 = 1</li>
@@ -216,8 +215,8 @@ Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
 -------
  10000  (16 decimal)
 </pre>
-            <p><strong>Ejemplo resuelto:</strong> 111 + 001 = 1000, porque 7 + 1 = 8 en decimal.</p>
-            <p>La aritmética binaria es la base de cómo los circuitos suman y restan valores en un computador.</p>
+            <p><strong>Ejemplo resuelto:</strong> 111 + 001 = 1000, porque 7 + 1 = 8 en decimal. En binario, cuando se suma 1 + 1 se escribe 0 y se lleva 1 a la siguiente posición.</p>
+            <p>Los circuitos lógicos usan sumadores y señales de acarreo. Cuando el resultado supera la cantidad de bits disponibles, aparece un desbordamiento (overflow), que es importante estudiar en programación y diseño de hardware.</p>
           </div>
         `
       },
@@ -226,7 +225,7 @@ Decimal 25 = Binario 11001 = Octal 31 = Hexadecimal 19
         content: `
           <div class="topic-panel">
             <h3>Álgebra de Boole</h3>
-            <p>El álgebra de Boole trabaja con valores lógicos: 1 para verdadero y 0 para falso. Se usa en circuitos digitales y en decisiones dentro de los programas.</p>
+            <p>El álgebra de Boole trabaja con valores lógicos: 1 para verdadero y 0 para falso. Se usa en circuitos digitales y en decisiones dentro de los programas, porque las condiciones se evalúan como verdadero o falso.</p>
             <pre>AND: 1 AND 1 = 1
 1 AND 0 = 0
 
@@ -236,12 +235,15 @@ OR: 1 OR 0 = 1
 NOT: NOT 1 = 0
 NOT 0 = 1
 </pre>
-            <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar <code>AND</code> y <code>OR</code> para decidir si una luz debe encenderse según si hay coches o peatones.</p>
-            <p>La lógica booleana ayuda a construir condiciones precisas y simples en los programas.</p>
+            <p>Las puertas lógicas son la implementación física de estas operaciones. Por ejemplo, una puerta AND solo encenderá su salida si todas sus entradas son 1. Una puerta OR enciende la salida si al menos una entrada es 1.</p>
+            <p><strong>Ejemplo práctico:</strong> Un semáforo puede usar AND y OR para decidir si una luz debe encenderse según si hay coches o peatones. Si hay coche y el semáforo está en verde, la luz de paso queda activa; si no, permanece en rojo.</p>
+            <p>La lógica booleana ayuda a construir condiciones precisas y simples en los programas, como `if (edad >= 18 && tieneIdentificacion)` para decidir si alguien puede entrar a un lugar.</p>
           </div>
         `
       }
     ];
+
+
 
     function updatePdfList(input, listElement, defaultLabel) {
       const list = listElement.querySelector('ul');
@@ -311,54 +313,59 @@ NOT 0 = 1
     }
 
     const BG_AUDIO_KEY = 'bgAudioEnabled';
-    let bgPlaying = localStorage.getItem(BG_AUDIO_KEY) === 'true';
+    let bgAudioEnabled = localStorage.getItem(BG_AUDIO_KEY) === 'true';
+    let bgAudioReady = false;
+    let bgPlayer = null;
 
-    function createBackgroundPlayer() {
-      const container = document.getElementById('bgAudioPlayer');
-      if (!container) return;
-      container.innerHTML = `<iframe id="youtubeBackground" width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-    }
-
-    function setBackgroundButtonState(playing) {
+    function setBackgroundAudioState(active) {
       const button = document.getElementById('bgAudioToggle');
       if (!button) return;
-      button.textContent = playing ? 'Pausar música de fondo' : 'Reproducir música de fondo';
-      localStorage.setItem(BG_AUDIO_KEY, playing ? 'true' : 'false');
-    }
-
-    function ensureBackgroundAudio() {
-      if (!bgPlaying) return;
-      const iframe = document.getElementById('youtubeBackground');
-      if (!iframe) return;
-      if (!iframe.src) {
-        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
-      }
+      button.textContent = active ? 'Pausar música de fondo' : 'Reproducir música de fondo';
+      localStorage.setItem(BG_AUDIO_KEY, active ? 'true' : 'false');
     }
 
     function toggleBackgroundAudio() {
-      const button = document.getElementById('bgAudioToggle');
-      const iframe = document.getElementById('youtubeBackground');
-      if (!button || !iframe) return;
-
-      if (!bgPlaying) {
-        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
+      if (!bgAudioReady || !bgPlayer) return;
+      if (!bgAudioEnabled) {
+        bgPlayer.playVideo();
+        bgAudioEnabled = true;
       } else {
-        iframe.src = '';
+        bgPlayer.pauseVideo();
+        bgAudioEnabled = false;
       }
+      setBackgroundAudioState(bgAudioEnabled);
+    }
 
-      bgPlaying = !bgPlaying;
-      setBackgroundButtonState(bgPlaying);
+    function onYouTubeIframeAPIReady() {
+      bgPlayer = new YT.Player('bgAudioPlayer', {
+        height: '0',
+        width: '0',
+        videoId: 'PIF4So6xcU8',
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: 'PIF4So6xcU8',
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: () => {
+            bgAudioReady = true;
+            setBackgroundAudioState(bgAudioEnabled);
+            if (bgAudioEnabled) {
+              bgPlayer.setVolume(18);
+              bgPlayer.playVideo();
+            }
+          }
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       createTopicTabs();
-      createBackgroundPlayer();
-      setBackgroundButtonState(bgPlaying);
-      ensureBackgroundAudio();
-      if (bgPlaying) {
-        document.addEventListener('pointerdown', () => ensureBackgroundAudio(), { once: true });
-      }
-
+      setBackgroundAudioState(bgAudioEnabled);
       const bgButton = document.getElementById('bgAudioToggle');
       if (bgButton) bgButton.addEventListener('click', toggleBackgroundAudio);
 

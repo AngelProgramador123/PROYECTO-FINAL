@@ -136,6 +136,7 @@
     <footer>© 2026 Angel Angulo · Unidad 2</footer>
   </div>
 
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     const topics = [
       {
@@ -143,24 +144,16 @@
         content: `
           <div class="topic-panel">
             <h3>Algoritmos y sus características</h3>
-            <p>Un algoritmo es una serie de pasos ordenados para resolver un problema. Debe ser claro, finito, preciso y producir un resultado concreto.</p>
+            <p>Un algoritmo es una serie de pasos ordenados para resolver un problema. Debe ser claro, finito, preciso y producir un resultado concreto. Cada paso debe ser entendible y ejecutable sin ambigüedades.</p>
+            <p>Un buen algoritmo define las entradas que recibe, cómo procesa esos datos y qué resultados entrega. También debe ser eficiente para que no use más pasos o recursos de los necesarios.</p>
             <ul>
               <li>Claro: cada paso se entiende sin confusión.</li>
               <li>Finito: termina después de un número limitado de pasos.</li>
               <li>Preciso: no deja dudas sobre qué hacer en cada paso.</li>
               <li>Entrada y salida: recibe datos y genera un resultado.</li>
             </ul>
-            <p><strong>Ejemplo resuelto:</strong> Encontrar el número mayor entre dos valores:</p>
-            <pre>INICIO
-  LEER numero1
-  LEER numero2
-  SI numero1 > numero2 ENTONCES
-    MOSTRAR numero1
-  SINO
-    MOSTRAR numero2
-  FIN SI
-FIN</pre>
-            <p>Si numero1=7 y numero2=5, el resultado es 7. Si numero1=12 y numero2=15, el resultado es 15.</p>
+            <p><strong>Ejemplo resuelto:</strong> Encontrar el número mayor entre dos valores. El algoritmo lee los dos números, los compara y muestra el mayor. Esto es útil para entender decisiones básicas en programación.</p>
+            <p>Los algoritmos también se usan para ordenar listas, buscar elementos y automatizar tareas repetitivas como calcular promedios o verificar condiciones.</p>
           </div>
         `
       },
@@ -169,23 +162,16 @@ FIN</pre>
         content: `
           <div class="topic-panel">
             <h3>Diagramas de flujo</h3>
-            <p>Los diagramas de flujo representan los pasos de un algoritmo con formas y flechas. Son útiles para planificar antes de programar.</p>
+            <p>Los diagramas de flujo representan los pasos de un algoritmo con formas y flechas. Son útiles para planificar antes de programar y para revisar la lógica sin necesidad de código.</p>
             <ul>
               <li>Óvalo: inicio o fin del proceso.</li>
               <li>Rectángulo: acción o cálculo.</li>
               <li>Rombo: decisión o condición.</li>
               <li>Flechas: indican el orden de los pasos.</li>
             </ul>
-            <p><strong>Ejemplo resuelto:</strong> Decidir si se debe llevar paraguas:</p>
-            <pre>INICIO
-  PREGUNTAR "¿Está lloviendo?"
-  SI SÍ ENTONCES
-    MOSTRAR "Llevar paraguas"
-  SINO
-    MOSTRAR "No llevar paraguas"
-  FIN SI
-FIN</pre>
-            <p>Este diagrama muestra cómo una pregunta cambia el flujo del proceso.</p>
+            <p>Un diagrama bien hecho ayuda a detectar errores lógicos y a compartir la solución con otras personas, porque muestra de forma visual cómo se mueve la información.</p>
+            <p><strong>Ejemplo resuelto:</strong> Decidir si se debe llevar paraguas. El flujo pregunta si está lloviendo. Si la respuesta es sí, muestra "Llevar paraguas"; de lo contrario, muestra "No llevar paraguas". Este ejemplo muestra una condición sencilla con dos posibles resultados.</p>
+            <p>Los diagramas de flujo también sirven para documentar procesos escolares o empresariales, como un procedimiento de inscripciones o la ruta de atención al cliente.</p>
           </div>
         `
       },
@@ -194,7 +180,8 @@ FIN</pre>
         content: `
           <div class="topic-panel">
             <h3>Pseudocódigo</h3>
-            <p>El pseudocódigo usa palabras simples para describir la lógica de un algoritmo sin detalles de un lenguaje específico.</p>
+            <p>El pseudocódigo usa palabras simples para describir la lógica de un algoritmo sin detalles de un lenguaje específico. Es una forma intermedia entre el razonamiento humano y la escritura de código.</p>
+            <p>El pseudocódigo es útil porque permite cambiar de idea rápidamente, ajustar la solución y luego traducirla a cualquier lenguaje de programación. No necesita sintaxis exacta, pero sí debe ser claro y ordenado.</p>
             <pre>INICIO
   LEER nota1
   LEER nota2
@@ -202,8 +189,8 @@ FIN</pre>
   promedio = (nota1 + nota2 + nota3) / 3
   MOSTRAR "El promedio es", promedio
 FIN</pre>
-            <p><strong>Ejemplo resuelto:</strong> Si nota1=8, nota2=7 y nota3=9, entonces promedio = (8 + 7 + 9) / 3 = 8.</p>
-            <p>El pseudocódigo ayuda a verificar los pasos antes de pasarlos a un lenguaje real.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si nota1=8, nota2=7 y nota3=9, entonces promedio = (8 + 7 + 9) / 3 = 8. Este algoritmo muestra cómo leer datos, calcular un valor y presentarlo.</p>
+            <p>El pseudocódigo ayuda a descomponer problemas complejos en pasos más pequeños y a verificar la lógica antes de programar. También sirve para intercambiar ideas entre compañeros antes de escribir código real.</p>
           </div>
         `
       },
@@ -213,16 +200,19 @@ FIN</pre>
           <div class="topic-panel">
             <h3>Modelo de problemas</h3>
             <p>El modelo de problemas divide el ejercicio en entradas, procesos y salidas. Esto ayuda a entender qué información se necesita y qué se debe obtener.</p>
+            <p>Antes de escribir un algoritmo, es importante definir claramente los datos de entrada, qué operaciones se deben realizar y cuál será el resultado esperado.</p>
             <pre>Problema: calcular precio final con IVA
 Entradas: precio, tasaIVA
 Proceso: precioFinal = precio + precio * tasaIVA
 Salida: precioFinal</pre>
-            <p><strong>Ejemplo resuelto:</strong> Si precio = 10 y tasaIVA = 0.12, entonces precioFinal = 10 + 10 * 0.12 = 11.2.</p>
-            <p>Con este modelo resultan más fáciles las decisiones sobre qué pasos debe tener el algoritmo.</p>
+            <p><strong>Ejemplo resuelto:</strong> Si precio = 10 y tasaIVA = 0.12, entonces precioFinal = 10 + 10 * 0.12 = 11.2. Este modelo también ayuda a validar si el algoritmo cubre todos los pasos necesarios.</p>
+            <p>Dividir el problema en partes hace que sea más fácil encontrar errores y explicar la solución a otras personas. Este enfoque se usa mucho en programación, ingeniería y matemáticas.</p>
           </div>
         `
       }
     ];
+
+
 
     function updatePdfList(input, listElement, defaultLabel) {
       const list = listElement.querySelector('ul');
@@ -279,7 +269,9 @@ Salida: precioFinal</pre>
     }
 
     const BG_AUDIO_KEY = 'bgAudioEnabled';
-    let bgPlaying = localStorage.getItem(BG_AUDIO_KEY) === 'true';
+    let bgAudioEnabled = localStorage.getItem(BG_AUDIO_KEY) === 'true';
+    let bgAudioReady = false;
+    let bgPlayer = null;
 
     function createTopicTabs() {
       const tabs = document.getElementById('topicTabs');
@@ -294,52 +286,61 @@ Salida: precioFinal</pre>
       setActiveTopic(0);
     }
 
-    function createBackgroundPlayer() {
-      const container = document.getElementById('bgAudioPlayer');
-      if (!container) return;
-      container.innerHTML = `<iframe id="youtubeBackground" width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-    }
-
-    function setBackgroundButtonState(playing) {
+    function setBackgroundAudioState(active) {
       const button = document.getElementById('bgAudioToggle');
       if (!button) return;
-      button.textContent = playing ? 'Pausar música de fondo' : 'Reproducir música de fondo';
-      localStorage.setItem(BG_AUDIO_KEY, playing ? 'true' : 'false');
-    }
-
-    function ensureBackgroundAudio() {
-      if (!bgPlaying) return;
-      const iframe = document.getElementById('youtubeBackground');
-      if (!iframe) return;
-      if (!iframe.src) {
-        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
-      }
+      button.textContent = active ? 'Pausar música de fondo' : 'Reproducir música de fondo';
+      localStorage.setItem(BG_AUDIO_KEY, active ? 'true' : 'false');
     }
 
     function toggleBackgroundAudio() {
-      const button = document.getElementById('bgAudioToggle');
-      const iframe = document.getElementById('youtubeBackground');
-      if (!button || !iframe) return;
-
-      if (!bgPlaying) {
-        iframe.src = 'https://www.youtube.com/embed/PIF4So6xcU8?autoplay=1&controls=0&loop=1&playlist=PIF4So6xcU8&mute=0&modestbranding=1&rel=0';
-      } else {
-        iframe.src = '';
+      if (!bgAudioReady || !bgPlayer) {
+        const button = document.getElementById('bgAudioToggle');
+        if (button) button.textContent = '⏳';
+        return;
       }
 
-      bgPlaying = !bgPlaying;
-      setBackgroundButtonState(bgPlaying);
+      if (!bgAudioEnabled) {
+        bgPlayer.playVideo();
+        bgAudioEnabled = true;
+      } else {
+        bgPlayer.pauseVideo();
+        bgAudioEnabled = false;
+      }
+
+      setBackgroundAudioState(bgAudioEnabled);
+    }
+
+    function onYouTubeIframeAPIReady() {
+      bgPlayer = new YT.Player('bgAudioPlayer', {
+        height: '0',
+        width: '0',
+        videoId: 'PIF4So6xcU8',
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          loop: 1,
+          playlist: 'PIF4So6xcU8',
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1
+        },
+        events: {
+          onReady: () => {
+            bgAudioReady = true;
+            setBackgroundAudioState(bgAudioEnabled);
+            if (bgAudioEnabled) {
+              bgPlayer.setVolume(18);
+              bgPlayer.playVideo();
+            }
+          }
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       createTopicTabs();
-      createBackgroundPlayer();
-      setBackgroundButtonState(bgPlaying);
-      ensureBackgroundAudio();
-      if (bgPlaying) {
-        document.addEventListener('pointerdown', () => ensureBackgroundAudio(), { once: true });
-      }
-
+      setBackgroundAudioState(bgAudioEnabled);
       const bgButton = document.getElementById('bgAudioToggle');
       if (bgButton) bgButton.addEventListener('click', toggleBackgroundAudio);
 
